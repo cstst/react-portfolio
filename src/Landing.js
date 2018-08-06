@@ -9,8 +9,8 @@ export default () => (
 )
 
 const Wrapper = styled.div`
-    margin-top: 50px;
+
     height: 100vh;
-    padding: 25px;
-    background: pink;
+    padding: 80px 25px;
+    background: transparent;
 `

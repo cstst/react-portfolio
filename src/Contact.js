@@ -5,7 +5,7 @@ import styled from 'styled-components'
 export default () => (
     
     <Wrapper>
-        <StyledElement name="contact" />
+        <Element name="contact" />
         <h2>Contact</h2>
     </Wrapper>
 )
@@ -15,9 +15,4 @@ const Wrapper = styled.div`
     height: 100vh;
     padding: 25px;
     background: blue;
-`
-
-const StyledElement = styled(Element)`
-    position: absolute;
-    top: -50px;
 `

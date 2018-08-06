@@ -9,7 +9,8 @@ import Footer from "./Footer"
 import styled, { injectGlobal } from 'styled-components'
 
 export default () => (
-    <React.Fragment>
+    
+    <Wrapper>
         <Header />
         <Landing />
         <About />
@@ -17,7 +18,7 @@ export default () => (
         <Portfolio />
         <Contact />
         <Footer />
-    </React.Fragment>
+    </Wrapper>
 )
 
 injectGlobal`
@@ -26,4 +27,9 @@ injectGlobal`
         padding: 0;
         font-family: sans-serif;
     }
+`
+
+const Wrapper = styled.div`
+    background: #131414;
+    color: #eee;
 `

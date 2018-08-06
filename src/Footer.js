@@ -1,16 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
-export default class Footer extends Component {
+export default () => (
     
-    render() {
-        return (
-            <Wrapper>
-                <h2>Footer</h2>
-            </Wrapper>
-        )
-    }
-}
+    <Wrapper>
+        <h2>Footer</h2>
+    </Wrapper>
+)
 
 const Wrapper = styled.div`
     background: #555555;

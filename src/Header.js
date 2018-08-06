@@ -24,42 +24,55 @@ export default class Header extends Component {
 
     render() {
         return (
-            <Navbar fixed="top" color="light" light expand="md">
-                <StyledNavbarBrand onClick={() => scroll.scrollToTop()}>Derek Larson</StyledNavbarBrand>
-                <NavbarToggler onClick={this.toggle} style={{outline: 'none'}}/>
+        
+            <StyledNavbar fixed="top" expand="md">
+                <NavbarBrand onClick={() => scroll.scrollToTop()}>Derek Larson</NavbarBrand>
+                <NavbarToggler onClick={this.toggle}/>
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
                             <NavLink>
-                                <StyledLink to="about" smooth={true} duration={1000}>About</StyledLink>
+                                <Link to="about" smooth={true} duration={1000} offset={-81}>About</Link>
                             </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink>
-                                <StyledLink to="services" smooth={true} duration={1000}>Services</StyledLink>
+                                <Link to="services" smooth={true} duration={1000} offset={-81}>Services</Link>
                             </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink>
-                                <StyledLink to="portfolio" smooth={true} duration={1000}>Portfolio</StyledLink>
+                                <Link to="portfolio" smooth={true} duration={1000} offset={-81}>Portfolio</Link>
                             </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink>
-                                <StyledLink to="contact" smooth={true} duration={1000}>Contact</StyledLink>
+                                <Link to="contact" smooth={true} duration={1000} offset={-81}>Contact</Link>
                             </NavLink>
                         </NavItem>
                     </Nav>
                 </Collapse>
-            </Navbar>
+            </StyledNavbar>
+
         )
     }
 }
 
-const StyledNavbarBrand = styled(NavbarBrand)`
-    cursor: pointer;
-`
 
-const StyledLink = styled(Link)`
-    cursor: pointer;
+const StyledNavbar = styled(Navbar)`
+    
+    background: #181818;
+    color: #eee;
+    .navbar-brand, a {
+        cursor: pointer;
+        user-select: none;
+    }
+    .navbar-brand {
+        color: #fff;
+    }
+    .navbar-toggler {
+        background: white;
+        outline: none;
+    }
+
 `
