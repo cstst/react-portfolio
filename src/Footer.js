@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
@@ -14,5 +15,5 @@ export default class Footer extends Component {
 
 const Wrapper = styled.div`
     background: #555555;
-    padding: 15px 75px;
+    padding: 15px 25px;
 `

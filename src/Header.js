@@ -7,11 +7,7 @@ import {
     NavbarBrand,
     Nav,
     NavLink,
-    NavItem,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem } from 'reactstrap'
+    NavItem } from 'reactstrap'
 import styled from 'styled-components'
 
 export default class Header extends Component {
@@ -29,28 +25,28 @@ export default class Header extends Component {
     render() {
         return (
             <Navbar fixed="top" color="light" light expand="md">
-                <NavbarBrand onClick={() => scroll.scrollToTop()}>Derek Larson</NavbarBrand>
+                <NavbarBrand onClick={() => scroll.scrollToTop()} style={{cursor: 'pointer'}}>Derek Larson</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
                             <NavLink>
-                                <Link to="about" smooth={true} duration={1000}>About</Link>
+                                <Link to="about" smooth={true} duration={1000} style={{cursor: 'pointer'}}>About</Link>
                             </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink>
-                                <Link to="services" smooth={true} duration={1000}>Services</Link>
+                                <Link to="services" smooth={true} duration={1000} style={{cursor: 'pointer'}}>Services</Link>
                             </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink>
-                                <Link to="portfolio" smooth={true} duration={1000}>Portfolio</Link>
+                                <Link to="portfolio" smooth={true} duration={1000} style={{cursor: 'pointer'}}>Portfolio</Link>
                             </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink>
-                                <Link to="contact" smooth={true} duration={1000}>Contact</Link>
+                                <Link to="contact" smooth={true} duration={1000} style={{cursor: 'pointer'}}>Contact</Link>
                             </NavLink>
                         </NavItem>
                     </Nav>

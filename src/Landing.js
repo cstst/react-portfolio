@@ -3,15 +3,14 @@ import styled from 'styled-components'
 
 export default () => (
 
-    <React.Fragment>
-        <Wrapper>
-            <h2>Landing</h2>
-        </Wrapper>
-    </React.Fragment>
+    <Wrapper>
+        <h2>Landing</h2>
+    </Wrapper>
 )
 
 const Wrapper = styled.div`
+    margin-top: 50px;
     height: 100vh;
-    padding: 50px 75px;
+    padding: 25px;
     background: pink;
 `

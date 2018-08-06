@@ -6,7 +6,6 @@ import Services from './Services'
 import Portfolio from './Portfolio'
 import Contact from './Contact'
 import Footer from "./Footer"
-import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import styled, { injectGlobal } from 'styled-components'
 
 export default () => (

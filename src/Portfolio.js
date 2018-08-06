@@ -3,17 +3,21 @@ import { Element } from 'react-scroll'
 import styled from 'styled-components'
 
 export default () => (
-    <React.Fragment>
-        
-        <Element name="portfolio" />
-        <Wrapper>
-            <h2>Portfolio</h2>
-        </Wrapper>
-    </React.Fragment>
+
+    <Wrapper>
+        <StyledElement name="portfolio" />
+        <h2>Portfolio</h2>
+    </Wrapper>
 )
 
 const Wrapper = styled.div`
+    position: relative;
     height: 100vh;
-    padding: 75px;
+    padding: 25px;
     background: red;
+`
+
+const StyledElement = styled(Element)`
+    position: absolute;
+    top: -50px;
 `
