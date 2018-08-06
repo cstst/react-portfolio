@@ -4,9 +4,6 @@ import styled from 'styled-components'
 export default () => (
 
     <React.Fragment>
-        <a name="landing">'
-            <div/>
-        </a>
         <Wrapper>
             <h2>Landing</h2>
         </Wrapper>

@@ -1,11 +1,11 @@
 import React from 'react'
+import { Element } from 'react-scroll'
 import styled from 'styled-components'
 
 export default () => (
     <React.Fragment>
-        <a name="portfolio">
-            <div/>
-        </a>
+        
+        <Element name="portfolio" />
         <Wrapper>
             <h2>Portfolio</h2>
         </Wrapper>

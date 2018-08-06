@@ -1,13 +1,22 @@
 import React from 'react'
 import Header from "./Header"
-import Body from "./Body"
+import Landing from './Landing'
+import About from './About'
+import Services from './Services'
+import Portfolio from './Portfolio'
+import Contact from './Contact'
 import Footer from "./Footer"
+import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import styled, { injectGlobal } from 'styled-components'
 
 export default () => (
     <React.Fragment>
         <Header />
-        <Body />
+        <Landing />
+        <About />
+        <Services />
+        <Portfolio />
+        <Contact />
         <Footer />
     </React.Fragment>
 )

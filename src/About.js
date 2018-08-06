@@ -1,10 +1,11 @@
 import React from 'react'
+import { Element } from 'react-scroll'
 import styled from 'styled-components'
 
 export default () => (
     
     <React.Fragment>
-        <a name="about"><div/></a>
+        <Element name="about" />
         <Wrapper>
             <h2>About</h2>
         </Wrapper>
