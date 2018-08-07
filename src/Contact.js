@@ -6,7 +6,7 @@ export default () => (
     
     <Wrapper>
         <Element name="contact" />
-        <h2>Contact</h2>
+        <h4>Get In Touch</h4>
     </Wrapper>
 )
 
@@ -14,4 +14,5 @@ const Wrapper = styled.div`
     height: calc(100vh - 55px);
     padding: 25px;
     border-bottom: 1px solid black;
+    background: white;
 `

@@ -10,7 +10,7 @@ import styled, { injectGlobal } from 'styled-components'
 
 export default () => (
     
-    <Wrapper>
+    <React.Fragment>
         <Header />
         <Landing />
         <About />
@@ -18,7 +18,7 @@ export default () => (
         <Portfolio />
         <Contact />
         <Footer />
-    </Wrapper>
+    </React.Fragment>
 )
 
 injectGlobal`
@@ -27,8 +27,4 @@ injectGlobal`
         padding: 0;
         font-family: sans-serif;
     }
-`
-
-const Wrapper = styled.div`
-
 `

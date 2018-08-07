@@ -24,46 +24,51 @@ export default class Header extends Component {
 
     render() {
         return (
-        
             <StyledNavbar color="light" light fixed="top" expand="md">
                 <NavbarBrand onClick={() => scroll.scrollToTop()}>Derek Larson</NavbarBrand>
                 <NavbarToggler onClick={this.toggle}/>
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <NavLink>
-                                <Link to="about" smooth={true} duration={1000} offset={-81}>About</Link>
-                            </NavLink>
+                            <Link to="about" smooth={true} duration={1000} offset={-81}>
+                                <NavLink>
+                                    About
+                                </NavLink>
+                            </Link>
                         </NavItem>
                         <NavItem>
-                            <NavLink>
-                                <Link to="services" smooth={true} duration={1000} offset={-81}>Services</Link>
-                            </NavLink>
+                            <Link to="services" smooth={true} duration={1000} offset={-81}>
+                                <NavLink>
+                                    Services
+                                </NavLink>
+                            </Link>
                         </NavItem>
                         <NavItem>
-                            <NavLink>
-                                <Link to="portfolio" smooth={true} duration={1000} offset={-81}>Portfolio</Link>
-                            </NavLink>
+                            <Link to="portfolio" smooth={true} duration={1000} offset={-81}>
+                                <NavLink>
+                                    Portfolio
+                                </NavLink>
+                            </Link>
                         </NavItem>
                         <NavItem>
-                            <NavLink>
-                                <Link to="contact" smooth={true} duration={1000} offset={-81}>Contact</Link>
-                            </NavLink>
+                            <Link to="contact" smooth={true} duration={1000} offset={-81}>
+                                <NavLink>
+                                    Contact
+                                </NavLink>
+                            </Link>
                         </NavItem>
                     </Nav>
                 </Collapse>
             </StyledNavbar>
-
         )
     }
 }
 
 
 const StyledNavbar = styled(Navbar)`
-    
+    user-select: none;
     .navbar-brand, a {
         cursor: pointer;
-        user-select: none;
     }
     .navbar-toggler {
         outline: none;
