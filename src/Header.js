@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react'
 import { Link,  animateScroll as scroll} from 'react-scroll'
 import {
@@ -31,30 +32,22 @@ export default class Header extends Component {
                     <Nav className="ml-auto" navbar>
                         <NavItem>
                             <Link to="about" smooth={true} duration={1000} offset={-81}>
-                                <NavLink>
-                                    About
-                                </NavLink>
+                                <NavLink>About</NavLink>
                             </Link>
                         </NavItem>
                         <NavItem>
                             <Link to="services" smooth={true} duration={1000} offset={-81}>
-                                <NavLink>
-                                    Services
-                                </NavLink>
+                                <NavLink>Services</NavLink>
                             </Link>
                         </NavItem>
                         <NavItem>
                             <Link to="portfolio" smooth={true} duration={1000} offset={-81}>
-                                <NavLink>
-                                    Portfolio
-                                </NavLink>
+                                <NavLink>Portfolio</NavLink>
                             </Link>
                         </NavItem>
                         <NavItem>
                             <Link to="contact" smooth={true} duration={1000} offset={-81}>
-                                <NavLink>
-                                    Contact
-                                </NavLink>
+                                <NavLink>Contact</NavLink>
                             </Link>
                         </NavItem>
                     </Nav>
