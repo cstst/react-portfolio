@@ -25,7 +25,7 @@ export default class Header extends Component {
     render() {
         return (
         
-            <StyledNavbar fixed="top" expand="md">
+            <StyledNavbar color="light" light fixed="top" expand="md">
                 <NavbarBrand onClick={() => scroll.scrollToTop()}>Derek Larson</NavbarBrand>
                 <NavbarToggler onClick={this.toggle}/>
                 <Collapse isOpen={this.state.isOpen} navbar>
@@ -61,18 +61,11 @@ export default class Header extends Component {
 
 const StyledNavbar = styled(Navbar)`
     
-    background: #181818;
-    color: #eee;
     .navbar-brand, a {
         cursor: pointer;
         user-select: none;
     }
-    .navbar-brand {
-        color: #fff;
-    }
     .navbar-toggler {
-        background: white;
         outline: none;
     }
-
 `

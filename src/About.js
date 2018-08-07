@@ -11,8 +11,7 @@ export default () => (
 )
 
 const Wrapper = styled.div`
-    position: relative;
-    height: 100vh;
+    height: calc(100vh - 55px);
     padding: 25px;
-    background: #131414;
+    border-bottom: 1px solid black;
 `

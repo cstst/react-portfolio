@@ -4,11 +4,12 @@ import styled from 'styled-components'
 export default () => (
     
     <Wrapper>
-        <h2>Footer</h2>
+        <h4>Footer</h4>
     </Wrapper>
 )
 
 const Wrapper = styled.div`
-    background: #555555;
+    height: 56px;
     padding: 15px 25px;
+    box-sizing: border-box;
 `

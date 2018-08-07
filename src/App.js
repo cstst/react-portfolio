@@ -30,6 +30,5 @@ injectGlobal`
 `
 
 const Wrapper = styled.div`
-    background: #131414;
-    color: #eee;
+
 `
