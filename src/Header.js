@@ -17,17 +17,11 @@ export default class Header extends Component {
         isOpen: false
     }
 
-    toggle = () => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
-    }
-
     render() {
         return (
             <StyledNavbar color="light" light fixed="top" expand="md">
                 <NavbarBrand onClick={() => scroll.scrollToTop()}>Derek Larson</NavbarBrand>
-                <NavbarToggler onClick={this.toggle}/>
+                <NavbarToggler onClick={() => this.setState({isOpen: !this.state.isOpen})}/>
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>

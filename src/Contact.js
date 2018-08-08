@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { Component } from 'react'
-import { Element } from 'react-scroll'
+import { Element, animateScroll as scroll } from 'react-scroll'
+import PageUp from './ScrollButton'
 import styled from 'styled-components'
 
 export default class Contact extends Component {
@@ -22,10 +23,9 @@ export default class Contact extends Component {
 
     handleFormSubmit = () => {
         if (Object.keys(this.state.form).every(value => this.state.form[value].length > 0)) {
+            console
             window.open(`
-                mailto:derekslarson@gmail.com?
-                subject=${this.state.subject}
-                &body=${this.state.message} \n ${this.state.name} \n ${this.state.email}
+                mailto:derekslarson@gmail.com?subject=${this.state.form.subject}&body=${this.state.form.message} \n ${this.state.form.name} \n ${this.state.form.email}
             `)
             this.setState({
                 name: '',
@@ -51,20 +51,20 @@ export default class Contact extends Component {
             <Wrapper>
                 <Element name="contact" />
                 <h4>Get In Touch</h4>
-                <div>
-                    <input id="name" value={this.state.name} onChange={this.handleFormChange} placeholder="Name *" />
-                    <input id="email" value={this.state.email} onChange={this.handleFormChange} placeholder="Email *" />
-                    <input id="subject" value={this.state.subject} onChange={this.handleFormChange} placeholder="Subject *" />
-                    <textarea id="message" value={this.state.message} onChange={this.handleFormChange} placeholder="Message *" />
-                    <button type="submit" onClick={this.handleFormSubmit}>Send</button>
-                </div>
-                <FlashBackground visibility={this.state.flashVisibile}>
-                    <Flash>
-                        <FlashButton onClick={this.closeFlash}>X</FlashButton>
+                <ContactForm>
+                    <input id="name" value={this.state.form.name} onChange={this.handleFormChange} placeholder="Name *" />
+                    <input id="email" value={this.state.form.email} onChange={this.handleFormChange} placeholder="Email *" />
+                    <input id="subject" value={this.state.form.subject} onChange={this.handleFormChange} placeholder="Subject *" />
+                    <textarea id="message" value={this.state.form.message} onChange={this.handleFormChange} placeholder="Message *" />
+                    <button onClick={this.handleFormSubmit}>Send</button>
+                </ContactForm>
+                <Flash visibility={this.state.flashVisibile}>
+                    <div>
+                        <button onClick={this.closeFlash}>X</button>
                         Please complete every field
-                    </Flash>
-            	</FlashBackground>
-                
+                    </div>
+            	</Flash>
+                <PageUp up onClick={() => scroll.scrollToTop()} />
             </Wrapper>
         )
     }
@@ -73,11 +73,20 @@ export default class Contact extends Component {
 const Wrapper = styled.div`
     height: calc(100vh - 55px);
     padding: 25px;
-    border-bottom: 1px solid black;
-    background: white;
+    border-bottom: 1px solid white;
+    background: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 `
 
-const FlashBackground = styled.div`
+const ContactForm = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+const Flash = styled.div`
     position: fixed;
     top: 0;
     left: 0;
@@ -86,20 +95,19 @@ const FlashBackground = styled.div`
     height: 100%;
 	z-index: 100;
     visibility: ${props=> props.visibility ? 'visibile' : 'hidden'};
-`;
 
-
-const Flash = styled.div`
-    position: fixed;
-    background: white;
-    width: 50%;
-    height: 50%;
-    top: 25%;
-    left: 25%;
-`;
-
-const FlashButton = styled.button`
-    position: absolute;
-    top: 0px;
-    right: 0px;
+    div {
+        position: fixed;
+        background: white;
+        width: 50%;
+        height: 50%;
+        top: 25%;
+        left: 25%;
+        
+        button {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+        }
+    }
 `
