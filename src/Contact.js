@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { Component } from 'react'
+import { Input, Button } from 'reactstrap'
 import { Element, animateScroll as scroll } from 'react-scroll'
 import PageUp from './ScrollButton'
 import styled from 'styled-components'
@@ -52,11 +53,11 @@ export default class Contact extends Component {
                 <Element name="contact" />
                 <h4>Get In Touch</h4>
                 <ContactForm>
-                    <input id="name" value={this.state.form.name} onChange={this.handleFormChange} placeholder="Name *" />
-                    <input id="email" value={this.state.form.email} onChange={this.handleFormChange} placeholder="Email *" />
-                    <input id="subject" value={this.state.form.subject} onChange={this.handleFormChange} placeholder="Subject *" />
-                    <textarea id="message" value={this.state.form.message} onChange={this.handleFormChange} placeholder="Message *" />
-                    <button onClick={this.handleFormSubmit}>Send</button>
+                    <Input id="name" value={this.state.form.name} onChange={this.handleFormChange} placeholder="Name *" />
+                    <Input type="email" id="email" value={this.state.form.email} onChange={this.handleFormChange} placeholder="Email *" />
+                    <Input id="subject" value={this.state.form.subject} onChange={this.handleFormChange} placeholder="Subject *" />
+                    <Input type="textarea" id="message" value={this.state.form.message} onChange={this.handleFormChange} placeholder="Message *" />
+                    <Button onClick={this.handleFormSubmit}>Send</Button>
                 </ContactForm>
                 <Flash visibility={this.state.flashVisibile}>
                     <div>
@@ -72,8 +73,8 @@ export default class Contact extends Component {
 
 const Wrapper = styled.div`
     height: calc(100vh - 55px);
-    padding: 25px;
     border-bottom: 1px solid white;
+    padding: 0 50px;
     background: black;
     color: white;
     display: flex;
@@ -84,6 +85,14 @@ const Wrapper = styled.div`
 const ContactForm = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
+    width: 70%;
+    input, textarea, button {
+        margin: 5px 0;
+    }
+    button {
+        width: 30%;
+    }
 `
 
 const Flash = styled.div`

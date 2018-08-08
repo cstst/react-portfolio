@@ -25,22 +25,22 @@ export default class Header extends Component {
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <Link to="about" smooth={true} duration={1000} offset={-81}>
+                            <Link to="about" smooth={true} duration={1000} offset={-56}>
                                 <NavLink>About</NavLink>
                             </Link>
                         </NavItem>
                         <NavItem>
-                            <Link to="services" smooth={true} duration={1000} offset={-81}>
+                            <Link to="services" smooth={true} duration={1000} offset={-56}>
                                 <NavLink>Services</NavLink>
                             </Link>
                         </NavItem>
                         <NavItem>
-                            <Link to="portfolio" smooth={true} duration={1000} offset={-81}>
+                            <Link to="portfolio" smooth={true} duration={1000} offset={-56}>
                                 <NavLink>Portfolio</NavLink>
                             </Link>
                         </NavItem>
                         <NavItem>
-                            <Link to="contact" smooth={true} duration={1000} offset={-81}>
+                            <Link to="contact" smooth={true} duration={1000} offset={-56}>
                                 <NavLink>Contact</NavLink>
                             </Link>
                         </NavItem>

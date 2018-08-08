@@ -21,7 +21,7 @@ export default () => (
 const Wrapper = styled.div`
     margin-top: 56px;
     height: calc(100vh - 56px);
-    padding: 25px;
+    padding: 0 50px;
     color: white;
     font-family: 'Open Sans', sans-serif;
     background: linear-gradient(
@@ -40,56 +40,53 @@ const Wrapper = styled.div`
         background-size: auto 100%;
         height: calc(100vh - 112px);
     }
+    h1 {
+        font-size: 150px;
+    }
 
 `
 
 const aFrame = keyframes`
     0% {
-        opacity: 1;
-    }
-    32% {
-        opacity: 1;
+        visibility: visible;
     }
     33% {
-        opacity: 0;
+        visibility: hidden;
     }
     100% {
-        opacity: 0;
+        visibility: hidden;
     }
 `
 const bFrame = keyframes`
     0% {
-        opacity: 0;
+        visibility: hidden;
     }
     32% {
-        opacity: 0;
+        visibility: hidden;
     }
     33% {
-        opacity: 1;
-    }
-    65% {
-        opacity: 1;
+        visibility: visible;
     }
     66% {
-        opacity: 0;
+        visibility: hidden;
     }
     100% {
-        opacity: 0;
+        visibility: hidden;
     }
 
 `
 const cFrame = keyframes`
     0% {
-        opacity: 0;
+        visibility: hidden;
     }
     65% {
-        opacity: 0;
+        visibility: hidden;
     }
     66% {
-        opacity: 1;
+        visibility: visible;
     }
     100% {
-        opacity: 1;
+        visibility: visible;
     }
 `
 
@@ -133,7 +130,6 @@ const TextCarousel = styled.div`
     position: relative;
     height: 110px;
     border-right: 1px solid white;
-    padding-left: 10px;
     animation: ${hider} 6s ease-out infinite;
     overflow: hidden;
     h2 {

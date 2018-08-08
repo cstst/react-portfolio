@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 
 export default props => (
-    <StyledLink to={props.to} up={props.up} onClick={props.onClick} smooth={true} duration={1000} offset={-81}>
+    <StyledLink to={props.to} up={props.up} onClick={props.onClick} smooth={true} duration={1000} offset={-56}>
             <FontAwesomeIcon icon={props.up ? faChevronUp : faChevronDown} />
     </StyledLink>
 ) 
