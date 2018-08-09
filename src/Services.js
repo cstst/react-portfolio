@@ -2,13 +2,12 @@
 import React from 'react'
 import { Element } from 'react-scroll'
 import PageDown from './ScrollButton'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import Section from './Section'
 import styled from 'styled-components'
 
 export default () => (
 
-    <Wrapper>
+    <Wrapper ScrollButtonTo="portfolio">
         <Element name="services" />
         <h4>My Services</h4>
         <div>
@@ -24,20 +23,11 @@ export default () => (
             <p>Everything I develop is fully responsive across all browsers and devices using technologies such as Bootstrap, CSS
                Grid and Flexbox.</p>
         </div>
-        <PageDown to="portfolio" icon={faChevronDown}>
-            <FontAwesomeIcon icon={faChevronDown} />
-        </PageDown>
     </Wrapper>
 )
 
-const Wrapper = styled.div`
-    height: calc(100vh - 55px);
-    border-bottom: 1px solid white;
-    padding: 0 50px;
-    background: black;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+
+const Wrapper = styled(Section)`
+
 `
 

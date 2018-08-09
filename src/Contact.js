@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { Input, Button } from 'reactstrap'
 import { Element, animateScroll as scroll } from 'react-scroll'
+import Section from './Section'
 import PageUp from './ScrollButton'
 import styled from 'styled-components'
 
@@ -49,7 +50,7 @@ export default class Contact extends Component {
 
     render() {
         return(    
-            <Wrapper>
+            <Wrapper up>
                 <Element name="contact" />
                 <h4>Get In Touch</h4>
                 <ContactForm>
@@ -65,21 +66,13 @@ export default class Contact extends Component {
                         Please complete every field
                     </div>
             	</Flash>
-                <PageUp up onClick={() => scroll.scrollToTop()} />
             </Wrapper>
         )
     }
 }
 
-const Wrapper = styled.div`
-    height: calc(100vh - 55px);
-    border-bottom: 1px solid white;
-    padding: 0 50px;
-    background: black;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+const Wrapper = styled(Section)`
+
 `
 
 const ContactForm = styled.div`

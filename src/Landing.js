@@ -1,111 +1,74 @@
 /* eslint-disable */
 import React, { Component } from 'react'
-import styled, { keyframes } from 'styled-components'
+import Section from './Section'
 import BackgroundImage from './img/back.jpg'
-import PageDown from './ScrollButton'
-
+import styled, { keyframes } from 'styled-components'
 
 export default class Landing extends Component {
-    
+
     state = {
-        aWidth: 0,
-        bWidth: 0,
-        cWidth: 0,
+        aWidth: '',
+        bWidth: '',
+        cWidth: '',
     }
 
     componentDidMount() {
         this.setState({
-            aWidth: this.a.offsetWidth,
-            bWidth: this.b.offsetWidth,
-            cWidth: this.c.offsetWidth,
+            aWidth: `${this.a.offsetWidth + 10}px`,
+            bWidth: `${this.b.offsetWidth + 10}px`,
+            cWidth: `${this.c.offsetWidth + 10}px`,
         })
     }
 
     render() {
         return(
-            <Wrapper>
-                <h1>Derek Larson</h1>
-                    <TextCarousel widths={this.state}>
-                        <CarouselWord a innerRef={x => this.a = x} id="a">Developer</CarouselWord>
-                        <CarouselWord b innerRef={x => this.b = x} id="b">Designer</CarouselWord>
-                        <CarouselWord c innerRef={x => this.c = x} id="c">Traveler</CarouselWord>
-                    </TextCarousel>
-                <PageDown to="about" />
+            <Wrapper ScrollButtonTo="about">
+                <TextCarousel widths={this.state}>
+                    <CarouselWord a innerRef={x => this.a = x} id="a">Developer</CarouselWord>
+                    <CarouselWord b innerRef={x => this.b = x} id="b">Designer</CarouselWord>
+                    <CarouselWord c innerRef={x => this.c = x} id="c">Traveler</CarouselWord>
+                </TextCarousel>
             </Wrapper>
         )
     }
 }
 
 const slider = props => keyframes`
-    0% {
+    0%, 33%, 66%, 99% {
         width: 1px;
     }
-    11% {
-        width: ${props.widths.aWidth + 10}px;
+    11%, 22% {
+        width: ${props.widths.aWidth};
     }
-    22% {
-        width: ${props.widths.aWidth + 10}px;
+    44%, 55% {
+        width: ${props.widths.bWidth};
     }
-    33% {
-        width: 1px;
+    77%, 88% {
+        width: ${props.widths.cWidth};
     }
-    44% {
-        width: ${props.widths.bWidth + 10}px;
-    }
-    55% {
-        width: ${props.widths.bWidth + 10}px;
-    }
-    66% {
-        width: 1px;
-    }
-    77% {
-        width: ${props.widths.cWidth + 10}px;
-    }
-    88% {
-        width: ${props.widths.cWidth + 10}px;
-    }
-    99% {
-        width: 1px;
-    }   
 `
 
 const hider = props => keyframes`
-    0% {
+    0%, 32% {
         opacity: ${props.a ? '1' : '0'};
     }
-    32% {
-        opacity: ${props.a ? '1' : '0'};
-    }
-    33% {
+    33%, 65% {
         opacity: ${props.b ? '1' : '0'};
     }
-    65% {
-        opacity: ${props.b ? '1' : '0'};
-    }
-    66% {
-        opacity: ${props.c ? '1' : '0'};
-    }
-    99% {
+    66%, 99% {
         opacity: ${props.c ? '1' : '0'};
     }
 `
 
-const Wrapper = styled.div`
+const Wrapper = styled(Section)`
     margin-top: 56px;
-    height: calc(100vh - 56px);
-    padding: 0 50px;
-    color: white;
-    font-family: 'Open Sans', sans-serif;
+    align-items: center;
     background: linear-gradient(
         rgba(0, 0, 0, 0.45), 
         rgba(0, 0, 0, 0.45)
         ), url(${BackgroundImage});
     background-attachment: fixed;
     background-size: 100% auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     @media screen and (max-width: 600px) {
         background-size: auto 100%;
         height: calc(100vh - 112px);
@@ -125,6 +88,7 @@ const CarouselWord = styled.h2`
     top: 0;
     left: 0;
     font-size: 85px;
+    font-weight: bold;
     animation: ${hider} 6s linear infinite;
     @media screen and (max-width: 600px) {
         font-size: 65px;

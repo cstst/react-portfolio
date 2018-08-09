@@ -1,21 +1,22 @@
 import React from 'react'
 import { Link } from 'react-scroll'
+import { Element, animateScroll as scroll } from 'react-scroll'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 
 
 export default props => (
-    <StyledLink to={props.to} up={props.up} onClick={props.onClick} smooth={true} duration={1000} offset={-56}>
+    <StyledLink to={props.to} up={props.up} onClick={props.up ? () => scroll.scrollToTop() : } smooth={true} duration={1000} offset={-56}>
             <FontAwesomeIcon icon={props.up ? faChevronUp : faChevronDown} />
     </StyledLink>
 ) 
 
 const StyledLink = styled(Link)`
-    position: relative;
+    position: absolute;
     align-self: center;
     width: 30px;
-    bottom: 6vh;
+    bottom: 10vh;
     background: transparent;
     border: none;
     outline: none;

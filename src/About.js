@@ -2,15 +2,15 @@
 
 import React from 'react'
 import { Element } from 'react-scroll'
-import PageDown from './ScrollButton'
+import Section from './Section'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { faChevronDown, faDownload } from '@fortawesome/free-solid-svg-icons'
+import { faDownload } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 
 export default () => (
     
-    <Wrapper>
+    <Wrapper ScrollButtonTo="services">
         <Element name="about" />
         <h4>About Me</h4>
         <p>I'm <strong>Derek Larson</strong>, a front-end web developer from Seattle, Washington, currently living in Phnom Penh, Cambodia.
@@ -30,19 +30,10 @@ export default () => (
                 <FontAwesomeIcon icon={faDownload} />
             </button>
         </div>
-        <PageDown to="services" />
     </Wrapper>
 )
-
-const Wrapper = styled.div`
-    height: calc(100vh - 55px);
-    border-bottom: 1px solid white;
-    padding: 0 50px;
-    background: black;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+ 
+const Wrapper = styled(Section)`
 
     button {
         background: transparent;
