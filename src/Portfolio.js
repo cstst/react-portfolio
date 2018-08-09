@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 export default () => (
 
-    <Wrapper ScrollButtonTo="contact">
+    <Wrapper scrollButtonTo="contact">
         <Element name="portfolio" />
         <h4>My Portfolio</h4>
         <div>

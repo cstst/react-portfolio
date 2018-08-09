@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import styled from 'styled-components'
 import ScrollButton from './ScrollButton'
@@ -5,7 +6,7 @@ import ScrollButton from './ScrollButton'
 export default props => (
     <Section className={props.className}>
         {props.children}
-        <ScrollButton up={props.up} to={props.ScrollButtonTo} onClick={props.onScrollClick} />
+        <ScrollButton scrollButtonTo={props.scrollButtonTo} />
     </Section>
 )
 

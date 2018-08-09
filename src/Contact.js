@@ -50,7 +50,7 @@ export default class Contact extends Component {
 
     render() {
         return(    
-            <Wrapper up>
+            <Wrapper scrollButtonTo="top">
                 <Element name="contact" />
                 <h4>Get In Touch</h4>
                 <ContactForm>

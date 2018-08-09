@@ -22,7 +22,7 @@ export default class Landing extends Component {
 
     render() {
         return(
-            <Wrapper ScrollButtonTo="about">
+            <Wrapper scrollButtonTo="about">
                 <TextCarousel widths={this.state}>
                     <CarouselWord a innerRef={x => this.a = x} id="a">Developer</CarouselWord>
                     <CarouselWord b innerRef={x => this.b = x} id="b">Designer</CarouselWord>
@@ -63,6 +63,8 @@ const hider = props => keyframes`
 const Wrapper = styled(Section)`
     margin-top: 56px;
     align-items: center;
+    justify-content: center;
+    border: none;
     background: linear-gradient(
         rgba(0, 0, 0, 0.45), 
         rgba(0, 0, 0, 0.45)
@@ -81,6 +83,7 @@ const TextCarousel = styled.div`
     animation: ${slider} 6s ease infinite;
     border-right: 1px solid white;
     overflow: hidden;
+
 `
 
 const CarouselWord = styled.h2`

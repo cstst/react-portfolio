@@ -10,7 +10,7 @@ import styled from 'styled-components'
 
 export default () => (
     
-    <Wrapper ScrollButtonTo="services">
+    <Wrapper scrollButtonTo="services">
         <Element name="about" />
         <h4>About Me</h4>
         <p>I'm <strong>Derek Larson</strong>, a front-end web developer from Seattle, Washington, currently living in Phnom Penh, Cambodia.

@@ -1,22 +1,27 @@
 import React from 'react'
 import { Link } from 'react-scroll'
-import { Element, animateScroll as scroll } from 'react-scroll'
+import { animateScroll as scroll } from 'react-scroll'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 
 
 export default props => (
-    <StyledLink to={props.to} up={props.up} onClick={props.up ? () => scroll.scrollToTop() : } smooth={true} duration={1000} offset={-56}>
-            <FontAwesomeIcon icon={props.up ? faChevronUp : faChevronDown} />
+    <StyledLink to={props.scrollButtonTo} 
+                onClick={props.scrollButtonTo === "top" ? () => scroll.scrollToTop() : null} 
+                smooth={true} 
+                duration={1000} 
+                offset={-56}>
+        <FontAwesomeIcon icon={faChevronDown} />
     </StyledLink>
 ) 
 
 const StyledLink = styled(Link)`
     position: absolute;
+    transform: ${props => props.to === 'top' ? 'rotate(180deg)' : ''};
     align-self: center;
     width: 30px;
-    bottom: 10vh;
+    bottom: ${props => props.to === 'top' ? '5vh' : '10vh'};
     background: transparent;
     border: none;
     outline: none;
@@ -46,7 +51,7 @@ const StyledLink = styled(Link)`
     }
     svg {
         position: absolute;
-        top: ${props => props.up ? '6px' : '8px'};
+        top: ${props => props.ScrollButtonTo === "top" ? '6px' : '8px'};
         left: 8px;
         color: white;
         cursor: pointer;
