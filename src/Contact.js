@@ -54,10 +54,24 @@ export default class Contact extends Component {
                 <Element name="contact" />
                 <h4>Get In Touch</h4>
                 <ContactForm>
-                    <Input id="name" value={this.state.form.name} onChange={this.handleFormChange} placeholder="Name *" />
-                    <Input type="email" id="email" value={this.state.form.email} onChange={this.handleFormChange} placeholder="Email *" />
-                    <Input id="subject" value={this.state.form.subject} onChange={this.handleFormChange} placeholder="Subject *" />
-                    <Input type="textarea" id="message" value={this.state.form.message} onChange={this.handleFormChange} placeholder="Message *" />
+                    <Input id="name" 
+                        value={this.state.form.name} 
+                        onChange={this.handleFormChange} 
+                        placeholder="Name *" />
+                    <Input type="email" 
+                        id="email" 
+                        value={this.state.form.email} 
+                        onChange={this.handleFormChange} 
+                        placeholder="Email *" />
+                    <Input id="subject" 
+                        value={this.state.form.subject} 
+                        onChange={this.handleFormChange} 
+                        placeholder="Subject *" />
+                    <Input type="textarea" 
+                        id="message" 
+                        value={this.state.form.message} 
+                        onChange={this.handleFormChange} 
+                        placeholder="Message *" />
                     <Button onClick={this.handleFormSubmit}>Send</Button>
                 </ContactForm>
                 <Flash visibility={this.state.flashVisibile}>
@@ -100,7 +114,7 @@ const Flash = styled.div`
 
     div {
         position: fixed;
-        background: white;
+        background: black;
         width: 50%;
         height: 50%;
         top: 25%;
