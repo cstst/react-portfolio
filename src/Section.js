@@ -16,7 +16,7 @@ export default props => (
                 smooth={true} 
                 duration={1000} 
                 offset={-56}>
-            <FontAwesomeIcon id="icon" icon={faChevronDown} />
+            <FontAwesomeIcon icon={faChevronDown} />
         </StyledLink>
     </Section>
 )
@@ -64,6 +64,7 @@ const StyledLink = styled(Link)`
     border: none;
     outline: none;
     user-select: none;
+    font-size: 15px;
     &:focus {
         border: none;
         outline: none;
@@ -87,15 +88,11 @@ const StyledLink = styled(Link)`
         background: rgba(255, 255, 255, 0);
         transform: scale(1.25, 1.25);
     }
-    #icon {
+    svg {
         position: absolute;
-        top: 7px;
-        left: 6px;
+        top: 8px;
+        left: 8px;
         color: white;
         cursor: pointer;
-        @media screen and (max-width: 600px) {
-            top: 8px;
-            left: 8px;   
-        }
     }
 `

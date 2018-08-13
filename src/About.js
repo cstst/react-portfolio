@@ -65,18 +65,22 @@ const Wrapper = styled(Section)`
     #links {
         position: absolute;
         width: 35vw;
-        bottom: 4.32vh;
+        bottom: 3.75vh;
         left: 0;
         display: flex;
         justify-content: space-between;
         margin-left: 125px;
-
         @media screen and (max-width: 600px) {
             position: relative;
             bottom: 0;
             margin: auto;
             width: 85vw;
         }
+        @media screen and (min-width: 600px) {
+            svg {
+                transform: scale(.8, .8);
+            }
+          }
     }
 
     @media screen and (max-width: 600px) {
@@ -101,12 +105,13 @@ const StyledA = styled.a`
         top: 0;
         left: 50%;
         transform: translate(-50%, 0);
-        top: 0;
         margin: auto;
+        font-size: 15px;
         transition: opacity .1s ease;
         opacity: 0;
         visibility: hidden;
         text-align: left;
+        z-index: 100;
         @media screen and (max-width: 600px) {
             font-size: 12px;
         }
