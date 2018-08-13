@@ -48,7 +48,7 @@ const Wrapper = styled(Section)`
             }
             h6 {
                 align-self: center;
-                margin-bottom: 10px;
+                margin: 10px 0;
             }
         }
     }
