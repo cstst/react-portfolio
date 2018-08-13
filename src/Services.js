@@ -1,15 +1,11 @@
 /* eslint-disable */
 import React from 'react'
-import { Element } from 'react-scroll'
-import PageDown from './ScrollButton'
 import Section from './Section'
 import styled from 'styled-components'
 
 export default () => (
 
-    <Wrapper scrollButtonTo="portfolio">
-        <Element name="services" />
-        <h4>My Services</h4>
+    <Wrapper title="My Services" ScrollElement="services" scrollButtonTo="portfolio">
         <div>
             <h6>Development</h6>
             <p>I specialize in front-end web development using technologies such as HTML, CSS, Sass, JavaScript, jQuery &amp; React.</p>

@@ -1,33 +1,55 @@
 /* eslint-disable */
 import React from 'react'
-import { Element } from 'react-scroll'
 import Section from './Section'
 import styled from 'styled-components'
+import MovieDatabase from './img/Movie Database.png'
+import MusicPlayer from './img/Music Player.png'
+import Pomodoro from './img/Pomodoro Timer.png'
+import Simon from './img/Simon.png'
 
 export default () => (
 
-    <Wrapper scrollButtonTo="contact">
-        <Element name="portfolio" />
-        <h4>My Portfolio</h4>
-        <div>
-            <h6>E-Commerce Store</h6>
-            <p>A mock up of an e-commerce store.</p>
-        </div>
-        <div>
-            <h6>Movie Database</h6>
-            <p>A Netflix-like movie database</p>
-        </div>
-        <div>
-            <h6>Music Player</h6>
-            <p>A functioning music player.</p>
-        </div>
-        <div>
-            <h6>Simon</h6>
-            <p>A recreation of the popular hand-held game.</p>
+    <Wrapper title="My Portfolio" ScrollElement="portfolio" scrollButtonTo="contact">
+        <div id="projects">
+            <div>
+                <img src={MovieDatabase} />
+                <h6>Movie Database</h6>
+                <p>A Netflix-like movie database.</p>
+            </div>
+            <div>
+                <img src={Pomodoro} />
+                <h6>Pomodoro Timer</h6>
+                <p>A timer to break down work into intervals separated by short breaks.</p>
+            </div>
+            <div>
+                <img src={Simon} />
+                <h6>Simon</h6>
+                <p>A re-creation of the popular hand-held game.</p>
+            </div>
         </div>
     </Wrapper>
 )
 
 const Wrapper = styled(Section)`
-
+    #projects {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-self: center;
+        div {
+            display: flex;
+            flex-direction: column;
+            margin: 20px;
+            width: 250px;
+            img {
+                height: auto;
+                width: 250px;
+            }
+            h6 {
+                align-self: center;
+                margin-bottom: 10px;
+            }
+        }
+    }
 `

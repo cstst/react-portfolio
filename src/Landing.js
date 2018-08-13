@@ -83,6 +83,10 @@ const TextCarousel = styled.div`
     animation: ${slider} 6s ease infinite;
     border-right: 1px solid white;
     overflow: hidden;
+    @media screen and (max-width: 600px) {
+        height: 90px;
+        bottom: 7px;
+    }
 
 `
 

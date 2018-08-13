@@ -1,43 +1,44 @@
 /* eslint-disable */
 import React, { Component } from 'react'
 import { Input, Button } from 'reactstrap'
-import { Element, animateScroll as scroll } from 'react-scroll'
 import Section from './Section'
-import PageUp from './ScrollButton'
 import styled from 'styled-components'
 
 export default class Contact extends Component {
+
     state = {
+        flashVisible: false,
         form: {
             name: '',
             email: '',
             subject: '',
             message: '',
         },
-        flashVisible: false,
     }
 
+
     handleFormChange = (e) => {
-        let newState = Object.assign({}, this.state);
-        newState.form[e.target.id] = e.target.value;
+        let newState = Object.assign({}, this.state)
+        newState.form[ e.target.id] = e.target.value
         this.setState(newState);
     }
 
     handleFormSubmit = () => {
-        if (Object.keys(this.state.form).every(value => this.state.form[value].length > 0)) {
-            console
-            window.open(`
-                mailto:derekslarson@gmail.com?subject=${this.state.form.subject}&body=${this.state.form.message} \n ${this.state.form.name} \n ${this.state.form.email}
-            `)
+        if (Object.keys(this.state.form).every(value => this.state.form[value] !== '')) {
+            window.open("mailto:derekslarson@gmail.com?" + 
+                `subject=${this.state.form.subject}` + 
+                `body=${this.state.form.message} ${this.state.form.name} ${this.state.form.email}`)
             this.setState({
-                name: '',
-                email: '',
-                subject: '',
-                message: '',
+                form: {
+                    name: '',
+                    email: '',
+                    subject: '',
+                    message: '',
+                }
             })
         } else {
             this.setState({
-                flashVisibile: true
+                flashVisibile: true,
             })
         }
     }
@@ -50,19 +51,19 @@ export default class Contact extends Component {
 
     render() {
         return(    
-            <Wrapper scrollButtonTo="top">
-                <Element name="contact" />
-                <h4>Get In Touch</h4>
+            <Wrapper title="Get In Touch" ScrollElement="contact" scrollButtonTo="top">
                 <ContactForm>
-                    <Input id="name" 
-                        value={this.state.form.name} 
-                        onChange={this.handleFormChange} 
-                        placeholder="Name *" />
-                    <Input type="email" 
-                        id="email" 
-                        value={this.state.form.email} 
-                        onChange={this.handleFormChange} 
-                        placeholder="Email *" />
+                    <div>
+                        <Input id="name" 
+                            value={this.state.form.name} 
+                            onChange={this.handleFormChange} 
+                            placeholder="Name *" />
+                        <Input type="email" 
+                            id="email" 
+                            value={this.state.form.email} 
+                            onChange={this.handleFormChange} 
+                            placeholder="Email *" />
+                    </div>
                     <Input id="subject" 
                         value={this.state.form.subject} 
                         onChange={this.handleFormChange} 
@@ -74,10 +75,10 @@ export default class Contact extends Component {
                         placeholder="Message *" />
                     <Button onClick={this.handleFormSubmit}>Send</Button>
                 </ContactForm>
-                <Flash visibility={this.state.flashVisibile}>
+                <Flash visibile={this.state.flashVisibile}>
                     <div>
-                        <button onClick={this.closeFlash}>X</button>
-                        Please complete every field
+                        <h2>Please complete every field</h2>
+                        <button onClick={this.closeFlash}>OK</button>
                     </div>
             	</Flash>
             </Wrapper>
@@ -86,6 +87,8 @@ export default class Contact extends Component {
 }
 
 const Wrapper = styled(Section)`
+    justify-content: center;
+    border: none;
 
 `
 
@@ -93,12 +96,33 @@ const ContactForm = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    width: 70%;
+    align-self: center;
+    width: 60%;
+    @media screen and (max-width: 600px) {
+        width: 95%;
+    }
+
     input, textarea, button {
         margin: 5px 0;
     }
     button {
         width: 30%;
+    }
+    
+    #message {
+        height: 100px;
+    }
+
+    div {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        input {
+            width: calc(50% - 5px);
+        }
+    }
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px white inset;
     }
 `
 
@@ -110,20 +134,22 @@ const Flash = styled.div`
     width: 100%;
     height: 100%;
 	z-index: 100;
-    visibility: ${props=> props.visibility ? 'visibile' : 'hidden'};
+    visibility: ${props=> props.visibile ? 'visibile' : 'hidden'};
 
     div {
         position: fixed;
         background: black;
         width: 50%;
         height: 50%;
-        top: 25%;
+        top: calc(25% + 20px);
         left: 25%;
-        
-        button {
-            position: absolute;
-            top: 0px;
-            right: 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @media screen and (max-width: 600px) {
+            width: 100%;
+            left: 0;
         }
     }
 `
