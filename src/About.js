@@ -1,11 +1,11 @@
 /* eslint-disable */
-
 import React from 'react'
 import Section from './Section'
+import { Link } from 'react-scroll'
 import Derek from './img/derek.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { faDownload } from '@fortawesome/free-solid-svg-icons'
+import { faDownload, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import Resume from './doc/Resume.docx'
 import styled from 'styled-components'
 
@@ -21,14 +21,19 @@ export default () => (
             on life and the skills needed to think oustide the box. I love a challenge and am a genuine autodidact. Get in touch
             with me for help on your project!</p>
         </div>
-        <div id="icons">
-            <StyledA id="resume" tooltip="Download my resume" href={Resume} download>
-                <FontAwesomeIcon icon={faDownload}transform="grow-13" />
-            </StyledA>
-            <StyledA tooltip="Visit my Linkedin" href="https://www.linkedin.com/in/derekslarson" target="_blank">
+        <div id="links">
+            <StyledLink to="contact"
+                smooth={true} 
+                duration={1000} 
+                offset={-56}>
+                    <StyledA id="resume" tooltip="Email me" href="" >
+                        <FontAwesomeIcon icon={faEnvelope} transform="grow-13" />
+                    </StyledA>
+            </StyledLink>
+            <StyledA tooltip="Visit my LinkedIn" href="https://www.linkedin.com/in/derekslarson" target="_blank">
                 <FontAwesomeIcon icon={faLinkedin} transform="grow-13" />
             </StyledA>
-            <StyledA tooltip="Visit my Github" href="https://github.com/cstst" target="_blank">
+            <StyledA tooltip="Visit my GitHub" href="https://github.com/cstst" target="_blank">
                 <FontAwesomeIcon icon={faGithub} transform="grow-13" />
             </StyledA>
         </div>
@@ -38,6 +43,7 @@ export default () => (
 const Wrapper = styled(Section)`    
     flex-direction: row;
     align-items: center;
+
     #copy {
         display: flex;
         text-align: justify;
@@ -45,10 +51,8 @@ const Wrapper = styled(Section)`
         justify-content: space-between;
         height: 300px;
         margin-left: 50px;
-        font-size: 20px;
         @media screen and (max-width: 600px) {
             margin-left: 0;
-            font-size: 15px;
         }
     }
     img {
@@ -58,7 +62,7 @@ const Wrapper = styled(Section)`
             display: none;
         }
     }
-    #icons {
+    #links {
         position: absolute;
         width: 35vw;
         bottom: 4.32vh;
@@ -66,6 +70,7 @@ const Wrapper = styled(Section)`
         display: flex;
         justify-content: space-between;
         margin-left: 125px;
+
         @media screen and (max-width: 600px) {
             position: relative;
             bottom: 0;
@@ -73,6 +78,7 @@ const Wrapper = styled(Section)`
             width: 85vw;
         }
     }
+
     @media screen and (max-width: 600px) {
         flex-direction: column;
     }
@@ -113,3 +119,5 @@ const StyledA = styled.a`
         }
     }
 `
+
+const StyledLink = StyledA.withComponent(Link)

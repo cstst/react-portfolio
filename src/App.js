@@ -22,9 +22,13 @@ export default () => (
 injectGlobal`
     @import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
 
-    * {
+    * {   
+        font-size: 20px;
         margin: 0;
         padding: 0;
+        @media screen and (max-width: 600px) {
+            font-size: 15px;
+        }
     }
 `
 
