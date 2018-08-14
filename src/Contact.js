@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { Component } from 'react'
-import { Input, Button } from 'reactstrap'
+import { Input, Fade, Button } from 'reactstrap'
 import background from './img/b4.jpg'
 import Section from './Section'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -87,14 +87,16 @@ export default class Contact extends Component {
                         <FontAwesomeIcon icon={faPaperPlane} transform="grow-15" />
                     </button>
                 </ContactForm>
-                <Flash visibile={this.state.flashVisibile}>
-                    <div>
-                        <h2>{this.state.flashMessage}</h2>
-                        <button onClick={() => this.setState({ flashVisibile: false })}>
-                            OK
-                        </button>
-                    </div>
-            	</Flash>
+                <Fade in={this.state.flashVisibile} exit>
+                    <Flash visibile={this.state.flashVisibile}>
+                        <div id="flash">
+                            <h2>{this.state.flashMessage}</h2>
+                            <Button onClick={() => this.setState({ flashVisibile: false })}>
+                                OK
+                            </Button>
+                        </div>
+                    </Flash>
+                </Fade>
             </Wrapper>
         )
     }
@@ -129,32 +131,34 @@ const ContactForm = styled.form`
         bottom: -50px;
         right: 15px;
         background: transparent;
-        color: white;
+        color: rgba(255, 255, 255, 1);
+        transition: color .4s ease-out;
         border: none;
         cursor: pointer;
         &:before {
             content: 'Send Message';
-            color: white;
+            color: rgba(255, 255, 255, 1);
             white-space: nowrap;
             position: absolute;
             top: 0;
             right: -10px;
             margin: auto;
             font-size: 15px;
-            transition: opacity .1s ease;
             opacity: 0;
-            visibility: hidden;
             text-align: left;
-            z-index: 10;
+            z-index: 0;
             @media screen and (max-width: 600px) {
                 font-size: 12px;
             }
         }
+        &:focus {
+            outline: none;
+        }
         &:hover {
             color: rgba(0, 0, 0, 0);
             &:before {
+                transition: opacity .4s ease-in;
                 opacity: 1;
-                visibility: visible;
             }
         }
     }
@@ -181,23 +185,30 @@ const Flash = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    background: hsla(0, 0%, 40%, .9);
+    background: rgba(0, 0, 0, .6);
     width: 100%;
     height: 100%;
-	z-index: 100;
+    z-index: 100;
     visibility: ${props=> props.visibile ? 'visibile' : 'hidden'};
 
-    div {
+    #flash {
         position: fixed;
-        background: black;
-        width: 50%;
-        height: 50%;
-        top: calc(25% + 20px);
-        left: 25%;
+        background: hsla(210, 2%, 18%, 1);
+        width: 40%;
+        border-radius: 5px;
+        height: 40%;
+        top: 30%;
+        left: 30%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        z-index: 100;
+        padding: 20px;
+        text-align: center;
+        button {
+            margin: 20px;
+        }
         @media screen and (max-width: 600px) {
             width: 100%;
             left: 0;

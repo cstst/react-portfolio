@@ -77,6 +77,7 @@ const StyledLink = styled(Link)`
     outline: none;
     user-select: none;
     font-size: 15px;
+    z-index: 0;
     &:focus {
         border: none;
         outline: none;
@@ -93,7 +94,7 @@ const StyledLink = styled(Link)`
         background: rgba(255, 255, 255, .2);
         cursor: pointer;
         transition: background .5s ease, transform .5s ease;
-        z-index: 2;
+        
         
     }
     &:hover:before {
@@ -102,7 +103,7 @@ const StyledLink = styled(Link)`
     }
     svg {
         position: absolute;
-        top: 8px;
+        top: 9px;
         left: 8px;
         color: white;
         cursor: pointer;

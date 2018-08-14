@@ -66,8 +66,8 @@ const Wrapper = styled(Section)`
     justify-content: center;
     border: none;
     background: linear-gradient(
-        rgba(0, 0, 0, 0.45), 
-        rgba(0, 0, 0, 0.45)
+        rgba(0, 0, 0, 0.6), 
+        rgba(0, 0, 0, 0.6)
         ), url(${BackgroundImage});
     background-attachment: fixed;
     background-size: cover;

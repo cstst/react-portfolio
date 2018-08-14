@@ -67,29 +67,30 @@ const Wrapper = styled(Section)`
         &:before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            transition: all 0.3s linear;
+            top: 5px;
+            left: 5px;
+            transition: all 0.3s ease;
             height: 100%;
             width: 100%;
-            background: #2D2E2F;
+            background: hsl(210, 2%, 18%);
         }
         img {
             position: relative;
-            top: 0;
-            left: 0;
-            transition: all 0.3s linear;
+            top: -5px;
+            left: -5px;
+            transition: all 0.4s ease;
             width: auto;
             height: 300px;
         }
         &:hover {
             &:before {
-                top: 5px;
-                left: 5px;
-            }
-            img {
                 top: -5px;
                 left: -5px;
+                background: hsl(210, 2%, 28%);
+            }
+            img {
+                top: 5px;
+                left: 5px;
             }
         }
         @media screen and (max-width: 600px) {
@@ -161,7 +162,7 @@ const StyledA = styled.a`
     background: transparent;
     border: none;
     color: rgb(255, 255, 255);
-    transition: color .3s ease;
+    transition: color .4s ease-out;
     width: 160px;
     text-align: center;
     &:before {
@@ -174,11 +175,9 @@ const StyledA = styled.a`
         transform: translate(-50%, 0);
         margin: auto;
         font-size: 15px;
-        transition: opacity .1s ease;
         opacity: 0;
-        visibility: hidden;
         text-align: left;
-        z-index: 10;
+        z-index: 0;
         @media screen and (max-width: 600px) {
             font-size: 12px;
         }
@@ -186,8 +185,8 @@ const StyledA = styled.a`
     &:hover {
         color: rgba(0, 0, 0, 0);
         &:before {
+            transition: opacity .4s ease-in;
             opacity: 1;
-            visibility: visible;
         }
     }
 `
