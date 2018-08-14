@@ -2,6 +2,7 @@
 import React from 'react'
 import Section from './Section'
 import styled from 'styled-components'
+import background from './img/b4.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLaptop, faObjectGroup, faMobileAlt } from '@fortawesome/free-solid-svg-icons'
 export default () => (
@@ -30,6 +31,12 @@ export default () => (
 const Wrapper = styled(Section)`
     display: flex;
     flex-direction: row;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.8), 
+        rgba(0, 0, 0, 0.8)
+        ), url(${background});
+    background-attachment: fixed;
+    background-size: cover;
     .service {
         display: flex;
         flex-direction: column;

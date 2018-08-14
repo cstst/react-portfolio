@@ -6,7 +6,6 @@ import About from './About'
 import Services from './Services'
 import Portfolio from './Portfolio'
 import Contact from './Contact'
-import Parent from './Challenge'
 
 export default () => (
   
@@ -17,7 +16,6 @@ export default () => (
       <Services />
       <Portfolio />
       <Contact />
-      <Parent />
     </React.Fragment>
 )
 

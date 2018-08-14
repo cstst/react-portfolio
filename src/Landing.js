@@ -70,9 +70,8 @@ const Wrapper = styled(Section)`
         rgba(0, 0, 0, 0.45)
         ), url(${BackgroundImage});
     background-attachment: fixed;
-    background-size: 100% auto;
+    background-size: cover;
     @media screen and (max-width: 600px) {
-        background-size: auto 100%;
         height: calc(100vh - 112px);
     }
 `

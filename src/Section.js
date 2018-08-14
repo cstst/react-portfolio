@@ -26,8 +26,7 @@ const Section = styled.div`
     padding: 125px;
     box-sizing: border-box;
     height: calc(100vh - 56px);
-    border-bottom: 1px solid white;
-    background: black;
+    background: #111111;
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
     color: white;
