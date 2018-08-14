@@ -5,14 +5,15 @@ import { Link } from 'react-scroll'
 import Derek from './img/derek.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { faDownload, faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import Resume from './doc/Resume.docx'
+import { faEnvelope, faDownload } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 
 export default () => (
     
     <Wrapper title="About Me" ScrollElement="about" scrollButtonTo="services">
-        <img src={Derek}/>
+        <div id="headshot-holder">
+            <img id="headshot" src={Derek}/>
+        </div>
         <div id="copy">
             <p>I'm <strong>Derek Larson</strong>, a front-end web developer from Seattle, Washington, currently living in Phnom Penh, Cambodia.
             I am well versed in technologies such as HTML, CSS, Sass, JavaScript, jQuery, React, Redux &amp; Git. I build dynamic,
@@ -27,14 +28,19 @@ export default () => (
                 duration={1000} 
                 offset={-56}>
                     <StyledA id="resume" tooltip="Email me" href="" >
-                        <FontAwesomeIcon icon={faEnvelope} transform="grow-13" />
+                        <FontAwesomeIcon icon={faEnvelope} transform="grow-8" />
                     </StyledA>
             </StyledLink>
             <StyledA tooltip="Visit my LinkedIn" href="https://www.linkedin.com/in/derekslarson" target="_blank">
-                <FontAwesomeIcon icon={faLinkedin} transform="grow-13" />
+                <FontAwesomeIcon icon={faLinkedin} transform="grow-8" />
             </StyledA>
             <StyledA tooltip="Visit my GitHub" href="https://github.com/cstst" target="_blank">
-                <FontAwesomeIcon icon={faGithub} transform="grow-13" />
+                <FontAwesomeIcon icon={faGithub} transform="grow-8" />
+            </StyledA>
+        </div>
+        <div id="resume">
+        <StyledA tooltip="Visit my GitHub" href="https://github.com/cstst" target="_blank">
+                <FontAwesomeIcon icon={faGithub} transform="grow-8" />
             </StyledA>
         </div>
     </Wrapper>
@@ -53,15 +59,46 @@ const Wrapper = styled(Section)`
         margin-left: 50px;
         @media screen and (max-width: 600px) {
             margin-left: 0;
+            margin-bottom: 25px;
+            width: 95%;
         }
     }
-    img {
-        width: auto;
-        height: 300px;
+
+    #headshot-holder {
+        position: relative;    
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all 0.3s linear;
+            height: 100%;
+            width: 100%;
+            background: white;
+        }
+        img {
+            position: relative;
+            top: 0;
+            left: 0;
+            transition: all 0.3s linear;
+            width: auto;
+            height: 300px;
+        }
+        &:hover {
+            &:before {
+                top: 5px;
+                left: 5px;
+            }
+            img {
+                top: -5px;
+                left: -5px;
+            }
+        }
         @media screen and (max-width: 600px) {
             display: none;
         }
     }
+
     #links {
         position: absolute;
         width: 35vw;
@@ -76,11 +113,12 @@ const Wrapper = styled(Section)`
             margin: auto;
             width: 85vw;
         }
-        @media screen and (min-width: 600px) {
+
+        @media screen and (max-width: 600px) {
             svg {
-                transform: scale(.8, .8);
-            }
-          }
+                transform: scale(1.4, 1.4);
+            } 
+        }
     }
 
     @media screen and (max-width: 600px) {
@@ -111,7 +149,7 @@ const StyledA = styled.a`
         opacity: 0;
         visibility: hidden;
         text-align: left;
-        z-index: 100;
+        z-index: 10;
         @media screen and (max-width: 600px) {
             font-size: 12px;
         }
@@ -125,4 +163,10 @@ const StyledA = styled.a`
     }
 `
 
-const StyledLink = StyledA.withComponent(Link)
+const StyledLink = styled(Link)`
+    margin: 10px;
+    width: 160px;
+    text-align: center;
+
+
+`

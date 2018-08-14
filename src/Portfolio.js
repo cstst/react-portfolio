@@ -13,8 +13,8 @@ export default () => (
         <div id="projects">
             <div>
                 <img src={MovieDatabase} />
-                <h6>Movie Database</h6>
-                <p>A Netflix-like movie database.</p>
+                <h6>LUMDB</h6>
+                <p>A Netflix-like movie database with a search function.</p>
             </div>
             <div>
                 <img src={Pomodoro} />

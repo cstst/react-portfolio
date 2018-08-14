@@ -15,7 +15,7 @@ export default props => (
                 onClick={props.scrollButtonTo === "top" ? () => scroll.scrollToTop() : null} 
                 smooth={true} 
                 duration={1000} 
-                offset={-56}>
+                offset={-57}>
             <FontAwesomeIcon icon={faChevronDown} />
         </StyledLink>
     </Section>
@@ -25,10 +25,11 @@ const Section = styled.div`
     position: relative;
     padding: 125px;
     box-sizing: border-box;
-    min-height: calc(100vh - 51px);
+    height: calc(100vh - 56px);
     border-bottom: 1px solid white;
     background: black;
     font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
     color: white;
     display: flex;
     flex-direction: column;
@@ -37,18 +38,30 @@ const Section = styled.div`
         position: absolute;
         top: 50px;
         left: 50px;
-        @media screen and (max-width: 600px) {
-            top: 30px
-            left: 10px;
-        }
+        font-size: 30px;
+    }
+    h6 {
+        font-size: 25px;
     }
     #element {
         position: absolute;
-        top: 4px;
+        top: 0;
         left: 0;
     }
     @media screen and (max-width: 600px) {
+        height: auto;
+        min-height: calc(100vh - 56px);
         padding: 80px 10px;
+        font-size: 15px;
+        h4 {
+            position: absolute;
+            top: 30px;
+            left: 10px;
+            font-size: 25px;
+        }
+        h6 {
+            font-size: 20px;
+        }
     }
 `
 

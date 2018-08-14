@@ -6,6 +6,7 @@ import About from './About'
 import Services from './Services'
 import Portfolio from './Portfolio'
 import Contact from './Contact'
+import Parent from './Challenge'
 
 export default () => (
   
@@ -16,6 +17,7 @@ export default () => (
       <Services />
       <Portfolio />
       <Contact />
+      <Parent />
     </React.Fragment>
 )
 
@@ -23,12 +25,8 @@ injectGlobal`
     @import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
 
     * {   
-        font-size: 20px;
         margin: 0;
         padding: 0;
-        @media screen and (max-width: 600px) {
-            font-size: 15px;
-        }
     }
 `
 
