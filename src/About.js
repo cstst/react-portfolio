@@ -14,7 +14,7 @@ export default class About extends Component {
 
     render() {
         return (    
-            <Wrapper ref={x => this.wrapper = x} title="About Me" ScrollElement="about" scrollButtonTo="services">
+            <Wrapper nav={this.props.nav} ref={x => this.wrapper = x} title="About Me" ScrollElement="about" scrollButtonTo="services">
                 <div id="headshot-holder">
                     <img id="headshot" src={Derek}/>
                 </div>
@@ -65,6 +65,7 @@ export default class About extends Component {
 }
  
 const Wrapper = styled(Section)`    
+    min-height: 100vh;
     flex-direction: row;
     align-items: center;
     #headshot-holder {
@@ -83,7 +84,7 @@ const Wrapper = styled(Section)`
             position: relative;
             top: -5px;
             left: -5px;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             width: auto;
             height: 300px;
         }
@@ -167,7 +168,7 @@ const StyledA = styled.a`
     background: transparent;
     border: none;
     color: rgb(255, 255, 255);
-    transition: color .4s ease-out;
+    transition: color .3s ease-out;
     width: 160px;
     text-align: center;
     &:before {
@@ -190,7 +191,7 @@ const StyledA = styled.a`
     &:hover {
         color: rgba(0, 0, 0, 0);
         &:before {
-            transition: opacity .4s ease-in;
+            transition: opacity .3s ease-in;
             opacity: 1;
         }
     }

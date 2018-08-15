@@ -65,9 +65,24 @@ const Wrapper = styled(Section)`
     align-items: center;
     justify-content: center;
     border: none;
-    background: transparent;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.6), 
+        rgba(0, 0, 0, 0.6)
+        ), url(${BackgroundImage}) no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 0 0; 
     @media screen and (max-width: 600px) {
+        background: transparent;
         height: calc(100vh - 112px);
+    }
+    @media screen and (max-width: 600px) {
+        #scroll-button {
+            bottom: 20vh;
+        }
     }
 `
 

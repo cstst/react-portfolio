@@ -34,7 +34,7 @@ export default class Portfolio extends Component {
 } 
 
 const Wrapper = styled(Section)`
-    height: calc(100vh - 56px);
+    min-height: 100vh;
     #projects {
         width: 100%;
         display: flex;

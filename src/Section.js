@@ -11,11 +11,12 @@ export default props => (
         {props.ScrollElement ? <Element id="element" name={props.ScrollElement} /> : null}
         {props.title ? <h4>{props.title}</h4> : null}
         {props.children}
-        <StyledLink to={props.scrollButtonTo === "top" ? null : props.scrollButtonTo} 
+        <StyledLink 
+                id="scroll-button"
+                to={props.scrollButtonTo === "top" ? null : props.scrollButtonTo} 
                 onClick={props.scrollButtonTo === "top" ? () => scroll.scrollToTop() : null} 
                 smooth={true} 
-                duration={1000} 
-                offset={-57}>
+                duration={1000}>
             <FontAwesomeIcon icon={faChevronDown} />
         </StyledLink>
     </Section>

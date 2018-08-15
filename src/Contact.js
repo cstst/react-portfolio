@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { Component } from 'react'
 import { Input, Fade, Button } from 'reactstrap'
-import background from './img/b4.jpg'
+import BackgroundImage from './img/back.jpg'
 import Section from './Section'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
@@ -103,8 +103,22 @@ export default class Contact extends Component {
 }
 
 const Wrapper = styled(Section)`
+    min-height: 100vh;
     justify-content: flex-end;
-    background: transparent;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.6), 
+        rgba(0, 0, 0, 0.6)
+        ), url(${BackgroundImage}) no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 0 0; 
+    @media screen and (max-width: 600px) {
+        background: transparent;
+    }
+
 `
 
 const ContactForm = styled.form`
@@ -127,7 +141,7 @@ const ContactForm = styled.form`
         right: 15px;
         background: transparent;
         color: rgba(255, 255, 255, 1);
-        transition: color .4s ease-out;
+        transition: color .3s ease-out;
         border: none;
         cursor: pointer;
         &:before {
@@ -144,6 +158,7 @@ const ContactForm = styled.form`
             z-index: 0;
             @media screen and (max-width: 600px) {
                 font-size: 12px;
+                right: 50px;
             }
         }
         &:focus {
@@ -152,7 +167,7 @@ const ContactForm = styled.form`
         &:hover {
             color: rgba(0, 0, 0, 0);
             &:before {
-                transition: opacity .4s ease-in;
+                transition: opacity .3s ease-in;
                 opacity: 1;
             }
         }

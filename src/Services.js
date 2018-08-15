@@ -35,7 +35,16 @@ export default class Services extends Component {
 const Wrapper = styled(Section)`
     display: flex;
     flex-direction: row;
-    background: transparent;
+    min-height: 100vh;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.6), 
+        rgba(0, 0, 0, 0.6)
+        ), url(${background}) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
     .service {
         display: flex;
         flex-direction: column;
@@ -51,6 +60,14 @@ const Wrapper = styled(Section)`
     }
     @media screen and (max-width: 600px) {
         flex-direction: column;
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.6), 
+            rgba(0, 0, 0, 0.6)
+            ), url(${background}) no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
         .service {
             width: 95%;
         }
