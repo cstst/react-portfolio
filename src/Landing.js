@@ -61,6 +61,7 @@ const hider = props => keyframes`
 `
 
 const Wrapper = styled(Section)`
+    min-height: 100vh;
     align-items: center;
     justify-content: center;
     border: none;

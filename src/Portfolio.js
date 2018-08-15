@@ -34,6 +34,7 @@ export default class Portfolio extends Component {
 } 
 
 const Wrapper = styled(Section)`
+    height: calc(100vh - 56px);
     #projects {
         width: 100%;
         display: flex;
@@ -54,5 +55,8 @@ const Wrapper = styled(Section)`
                 margin: 10px 0;
             }
         }
+    }
+    @media screen and (max-width: 600px) {
+        height: auto;
     }
 `

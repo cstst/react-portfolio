@@ -19,27 +19,27 @@ export default class Header extends Component {
 
     render() {
         return (
-            <StyledNavbar color="light" light fixed="top" expand="md">
+            <StyledNavbar fixed="top" expand="md">
                 <NavbarBrand onClick={() => scroll.scrollToTop()}>Derek Larson</NavbarBrand>
                 <NavbarToggler onClick={() => this.setState({isOpen: !this.state.isOpen})}/>
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
-                        <NavItem>
+                        <NavItem className={this.props.curPg ==="about" ? "active" : ""}>
                             <Link to="about" smooth={true} duration={1000} offset={-56}>
                                 <NavLink>About</NavLink>
                             </Link>
                         </NavItem>
-                        <NavItem>
+                        <NavItem className={this.props.curPg ==="services" ? "active" : ""}>
                             <Link to="services" smooth={true} duration={1000} offset={-56}>
                                 <NavLink>Services</NavLink>
                             </Link>
                         </NavItem>
-                        <NavItem>
+                        <NavItem className={this.props.curPg ==="portfolio" ? "active" : ""}>
                             <Link to="portfolio" smooth={true} duration={1000} offset={-56}>
                                 <NavLink>Portfolio</NavLink>
                             </Link>
                         </NavItem>
-                        <NavItem>
+                        <NavItem className={this.props.curPg ==="contact" ? "active" : ""}>
                             <Link to="contact" smooth={true} duration={1000} offset={-56}>
                                 <NavLink>Contact</NavLink>
                             </Link>
@@ -54,10 +54,21 @@ export default class Header extends Component {
 
 const StyledNavbar = styled(Navbar)`
     user-select: none;
+    background: white;
+    color: hsl(210, 2%, 58%);
+    font-weight: 100;
+    transition: all .4s ease;
     .navbar-brand, a {
         cursor: pointer;
     }
     .navbar-toggler {
         outline: none;
     }
+    .active {
+        font-weight: 500;
+        color: 	hsl(0, 0%, 7%);
+        transition: all .4s ease;
+        
+    }
+
 `

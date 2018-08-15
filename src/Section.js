@@ -25,7 +25,8 @@ const Section = styled.div`
     position: relative;
     padding: 125px;
     box-sizing: border-box;
-    height: 100%
+    height: auto;
+    min-height: calc(100vh - 56px);
     background: #111111;
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
@@ -49,7 +50,7 @@ const Section = styled.div`
     }
     @media screen and (max-width: 600px) {
         height: auto;
-        min-height: calc(100% - 56px);
+        min-height: calc(100vh - 56px);
         padding: 80px 10px;
         font-size: 15px;
         h4 {
