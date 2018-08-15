@@ -104,12 +104,7 @@ export default class Contact extends Component {
 
 const Wrapper = styled(Section)`
     justify-content: flex-end;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.8), 
-        rgba(0, 0, 0, 0.8)
-        ), url(${background});
-    background-attachment: fixed;
-    background-size: cover;
+    background: transparent;
 `
 
 const ContactForm = styled.form`
@@ -206,6 +201,7 @@ const Flash = styled.div`
         z-index: 100;
         padding: 20px;
         text-align: center;
+        font-size: 20px;
         button {
             margin: 20px;
         }

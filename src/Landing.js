@@ -61,16 +61,10 @@ const hider = props => keyframes`
 `
 
 const Wrapper = styled(Section)`
-    margin-top: 56px;
     align-items: center;
     justify-content: center;
     border: none;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.6), 
-        rgba(0, 0, 0, 0.6)
-        ), url(${BackgroundImage});
-    background-attachment: fixed;
-    background-size: cover;
+    background: transparent;
     @media screen and (max-width: 600px) {
         height: calc(100vh - 112px);
     }
