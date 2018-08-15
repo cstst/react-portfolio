@@ -7,7 +7,8 @@ import About from './About'
 import Services from './Services'
 import Portfolio from './Portfolio'
 import Contact from './Contact'
-import BackgroundImage from './img/back.jpg'
+import BackgroundOne from './img/back.jpg'
+import BackgroundTwo from './img/b4.jpg'
 
 export default class App extends Component {
     
@@ -60,14 +61,14 @@ export default class App extends Component {
     render() {
         
         return(
-            <React.Fragment> 
+            <Div curPg={this.state.curPg}> 
                 <Header curPg={this.state.curPg} />
                 <Landing />
                 <About ref={x => this.about = x} />
                 <Services ref={x => this.services = x} />
                 <Portfolio ref={x => this.portfolio = x} />
                 <Contact ref={x => this.contact = x} />
-            </React.Fragment>
+            </Div>
         )
     }
 }
@@ -79,7 +80,10 @@ injectGlobal`
         margin: 0;
         padding: 0;
     }
-    body:before {
+`
+
+const Div = styled.div`
+    &:before {
         content: "";
         display: block;
         position: fixed;
@@ -91,11 +95,10 @@ injectGlobal`
         background: linear-gradient(
             rgba(0, 0, 0, 0.6), 
             rgba(0, 0, 0, 0.6)
-            ), url(${BackgroundImage}) no-repeat center center;
+            ), url(${props => props.curPg === 'top' ? BackgroundOne: BackgroundTwo }) no-repeat center center;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-      }
+    }
 `
-
