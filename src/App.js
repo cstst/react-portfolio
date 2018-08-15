@@ -15,52 +15,59 @@ export default class App extends Component {
 
     componentDidMount = () => {
         window.addEventListener('scroll', this.handleScroll);
-        const about = ReactDOM.findDOMNode(this.about).offsetTop,
-            services = ReactDOM.findDOMNode(this.services).offsetTop,
-            portfolio = ReactDOM.findDOMNode(this.portfolio).offsetTop,
-            contact = ReactDOM.findDOMNode(this.contact).offsetTop
+        const about = ReactDOM.findDOMNode(this.about).offsetTop -57,
+            services = ReactDOM.findDOMNode(this.services).offsetTop -57,
+            portfolio = ReactDOM.findDOMNode(this.portfolio).offsetTop -57,
+            contact = ReactDOM.findDOMNode(this.contact).offsetTop -57
         this.setState({
-            about: {
-                position: about,
-                current: false,
+            positions: {
+                about: about,
+                services: services,
+                portfolio: portfolio,
+                contact: contact,
             },
-            services: {
-                position: services,
-                current: false,
-            },
-            portfolio: {
-                position: portfolio,
-                current: false,
-            },
-            contact:{
-                position: contact,
-                current: false,
-            },
+            curPg: 'top',
         })
     }
 
     handleScroll = () => {
-        const  { 
-                about: { position: abPos }, 
-                services: { position: servPos }, 
-                portfolio: { position: portPos },
-                contact: { position: contPos } 
-            } = this.state,
+        const { positions: {
+                    about, 
+                    services, 
+                    portfolio, 
+                    contact 
+                },
+                curPg } = this.state,
             curPos = window.scrollY
-        
-        
+        switch(true) {
+            case (curPos < about && curPg !== 'top'):
+                this.setState({ curPg: 'top' })
+                break
+            case (curPos > about && curPos < services && curPg !== 'about'):
+                this.setState({ curPg: 'about' })
+                break
+            case (curPos > services && curPos < portfolio && curPg !== 'services'):
+                this.setState({ curPg: 'services' })
+                break
+            case (curPos > portfolio && curPos < contact && curPg !== 'portfolio'):
+                this.setState({ curPg: 'portfolio' })
+                break
+            case (curPos > contact && curPg !== 'contact'):
+                this.setState({ curPg: 'contact' })
+                break
+        } 
     }
     render() {
         
         return(
-            <div> 
-                <Header />
+            <React.Fragment> 
+                <Header curPg={this.state.curPg} />
                 <Landing />
-                <About current={this.state.current} ref={x => this.about = x} />
+                <About ref={x => this.about = x} />
                 <Services ref={x => this.services = x} />
                 <Portfolio ref={x => this.portfolio = x} />
                 <Contact ref={x => this.contact = x} />
-            </div>
+            </React.Fragment>
         )
     }
 }
