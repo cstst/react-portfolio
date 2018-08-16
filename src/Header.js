@@ -68,7 +68,7 @@ const Wrapper = styled.div`
     .navbar {
         display: flex;
         justify-content: flex-end;
-        background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, 0)) !important;
+        background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, 0)) !important;
         user-select: none;
         font-weight: 100;
         transition: all .3s ease !important;

@@ -12,7 +12,7 @@ import BackgroundOne from './img/back.jpg'
 export default class App extends Component {
 
     state = {
-        curPg: 'top',
+        page: 'top',
         scrollPos: 0,
         hideNav: true,
         positions: {
@@ -25,65 +25,58 @@ export default class App extends Component {
 
     componentDidMount = () => {
         window.addEventListener('scroll', this.handleScroll)
-        const offset = window.innerHeight * .75,
-            about = ReactDOM.findDOMNode(this.about).offsetTop,
+        const about = ReactDOM.findDOMNode(this.about).offsetTop,
             services = ReactDOM.findDOMNode(this.services).offsetTop,
             portfolio = ReactDOM.findDOMNode(this.portfolio).offsetTop,
             contact = ReactDOM.findDOMNode(this.contact).offsetTop
         this.setState({
             positions: {
-                about: about - offset,
-                services: services - offset,
-                portfolio: portfolio - offset,
-                contact: contact - offset,
+                about: about,
+                services: services,
+                portfolio: portfolio,
+                contact: contact,
             },
         })
     }
 
     handleScroll = () => {
-        const { curPg,
-                positions: {
-                    about, 
-                    services, 
-                    portfolio, 
-                    contact 
-                } 
-            } = this.state,
-            curPos = window.scrollY,
-            offset = window.innerHeight * .75,
-            currentScrollPos = window.pageYOffset,
-            aboutNoOffset = about + offset,
-            hideNav = 
-                !((currentScrollPos > aboutNoOffset - 56 
-                && currentScrollPos < aboutNoOffset + 56) 
-                || this.state.scrollPos > currentScrollPos)
-        this.setState({ 
-                scrollPos: currentScrollPos,
+        const { scrollPos } = this.state,
+            curScrollPos = window.pageYOffset
+        if (scrollPos + 40 < curScrollPos || scrollPos - 40 > curScrollPos) {
+            const { positions: {
+                        about, 
+                        services, 
+                        portfolio, 
+                        contact 
+                    } 
+                } = this.state,
+                offset = window.innerHeight * .66,
+                curPage = 
+                    curScrollPos < about - offset ? 'top' :
+                    curScrollPos > about - offset && curScrollPos < services - offset  ? 'about' :
+                    curScrollPos > services - offset && curScrollPos < portfolio - offset ? 'services' :
+                    curScrollPos > portfolio - offset && curScrollPos < contact - offset ? 'portfolio' :
+                    curScrollPos > contact - offset ? 'contact' : '',
+                hideNav = !(
+                    (curScrollPos > about - 56 && curScrollPos < about + 100) ||
+                    (curScrollPos > services - 56 && curScrollPos < services + 100) ||
+                    (curScrollPos > portfolio - 56 && curScrollPos < portfolio + 100) ||
+                    (curScrollPos > contact - 56 && curScrollPos < contact + 100) ||
+                    curScrollPos < scrollPos
+                )    
+            console.log(ReactDOM.findDOMNode(this.portfolio).scrollHeight)
+            this.setState({ 
+                scrollPos: curScrollPos,
                 hideNav: hideNav,
-            })
-        switch(true) {
-            case (curPos < about && curPg !== 'top'):
-                this.setState({ curPg: 'top' })
-                break
-            case (curPos > about && curPos < services && curPg !== 'about'):
-                this.setState({ curPg: 'about' })
-                break
-            case (curPos > services && curPos < portfolio && curPg !== 'services'):
-                this.setState({ curPg: 'services' })
-                break
-            case (curPos > portfolio && curPos < contact && curPg !== 'portfolio'):
-                this.setState({ curPg: 'portfolio' })
-                break
-            case (curPos > contact && curPg !== 'contact'):
-                this.setState({ curPg: 'contact' })
-                break
-        }   
+                page: curPage
+            }) 
+        }
     }
     render() {
         
         return(
             <Wrapper> 
-                <Header hidden={this.state.hideNav} clear={this.state.clearNav} curPg={this.state.curPg} />
+                <Header hidden={this.state.hideNav} clear={this.state.clearNav} page={this.state.page} />
                 <Landing />
                 <About ref={x => this.about = x} />
                 <Services ref={x => this.services = x} />
