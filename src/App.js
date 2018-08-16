@@ -15,7 +15,6 @@ export default class App extends Component {
         curPg: 'top',
         scrollPos: 0,
         hideNav: true,
-        clearNav: true,
         positions: {
             about: null,
             services: null,
@@ -25,7 +24,6 @@ export default class App extends Component {
     }
 
     componentDidMount = () => {
-        
         window.addEventListener('scroll', this.handleScroll)
         const offset = window.innerHeight * .75,
             about = ReactDOM.findDOMNode(this.about).offsetTop,
@@ -55,22 +53,14 @@ export default class App extends Component {
             offset = window.innerHeight * .75,
             currentScrollPos = window.pageYOffset,
             aboutNoOffset = about + offset,
-            clearNav = (aboutNoOffset + 150) > currentScrollPos,
-            hideNav = !(currentScrollPos > aboutNoOffset - 56 && 
-                        currentScrollPos < aboutNoOffset + 112)
-        if (this.state.scrollPos > currentScrollPos) {
-            this.setState({ 
-                scrollPos: currentScrollPos,
-                hideNav: false,
-                clearNav: clearNav
-            })
-        } else {
-            this.setState({ 
+            hideNav = 
+                !((currentScrollPos > aboutNoOffset - 56 
+                && currentScrollPos < aboutNoOffset + 56) 
+                || this.state.scrollPos > currentScrollPos)
+        this.setState({ 
                 scrollPos: currentScrollPos,
                 hideNav: hideNav,
-                clearNav: clearNav
             })
-        }
         switch(true) {
             case (curPos < about && curPg !== 'top'):
                 this.setState({ curPg: 'top' })
