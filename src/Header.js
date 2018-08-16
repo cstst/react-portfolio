@@ -1,8 +1,6 @@
 /* eslint-disable */
 import React, { Component } from 'react'
 import { Link } from 'react-scroll'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
 import {
     Collapse,
     Navbar,
@@ -20,7 +18,7 @@ export default class Header extends Component {
     }
 
     componentDidUpdate = props => {
-        if (props.hidden && this.state.isOpen) {
+        if (!props.scrollUp && this.state.isOpen) {
             this.setState({ isOpen: false })
         }
     }
@@ -29,29 +27,33 @@ export default class Header extends Component {
         return (
             <Wrapper>
                 <Navbar 
-                    className={this.props.hidden ? "hidden" : this.state.isOpen ? "open" : ""} 
+                    className={
+                        this.props.scrollUp ? "scroll-up" : 
+                        this.props.pageHead ? "page-head" :
+                        this.state.isOpen ? "open" : ""
+                    } 
                     fixed="top" 
                     expand="md"
                 >   
                     <NavbarToggler onClick={() => this.setState({isOpen: !this.state.isOpen})}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
-                            <NavItem className={this.props.curPg ==="about" ? "active" : ""}>
+                            <NavItem className={this.props.page ==="about" ? "active" : ""}>
                                 <Link to="about" smooth={true} duration={1000}>
                                     <NavLink>About</NavLink>
                                 </Link>
                             </NavItem>
-                            <NavItem className={this.props.curPg ==="services" ? "active" : ""}>
+                            <NavItem className={this.props.page ==="services" ? "active" : ""}>
                                 <Link to="services" smooth={true} duration={1000}>
                                     <NavLink>Services</NavLink>
                                 </Link>
                             </NavItem>
-                            <NavItem className={this.props.curPg ==="portfolio" ? "active" : ""}>
+                            <NavItem className={this.props.page ==="portfolio" ? "active" : ""}>
                                 <Link to="portfolio" smooth={true} duration={1000}>
                                     <NavLink>Portfolio</NavLink>
                                 </Link>
                             </NavItem>
-                            <NavItem className={this.props.curPg ==="contact" ? "active" : ""}>
+                            <NavItem className={this.props.page ==="contact" ? "active" : ""}>
                                 <Link to="contact" smooth={true} duration={1000}>
                                     <NavLink>Contact</NavLink>
                                 </Link>
@@ -71,6 +73,7 @@ const Wrapper = styled.div`
         background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, 0)) !important;
         user-select: none;
         font-weight: 100;
+        top: -56px;
         transition: all .3s ease !important;
         @media screen and (max-width: 600px) {
             background: rgba(0, 0, 0, 0) !important;
@@ -93,7 +96,7 @@ const Wrapper = styled.div`
             }
 
         }
-        .navbar-nav {   
+        .navbar-nav {  
             @media screen and (max-width: 600px) {
                 display: flex;
                 flex-direction: column;
@@ -114,8 +117,13 @@ const Wrapper = styled.div`
             }
         }
     }
-    .hidden {
-        transform: translateY(-56px);
+    .scroll-up {
+        transform: translateY(56px);    
+    }
+    .page-head {
+        @media screen and (min-width: 600px) {
+            transform: translateY(56px);     
+        }
     }
     .open {
         background: rgba(0, 0, 0, .8) !important;

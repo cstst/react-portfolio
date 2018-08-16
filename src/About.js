@@ -132,7 +132,7 @@ const Wrapper = styled(Section)`
 
         @media screen and (max-width: 600px) {
             position: relative;
-            bottom: 0;
+            bottom: 30px;
             margin: auto;
             width: 85vw;
             #emailOne {
@@ -159,6 +159,12 @@ const Wrapper = styled(Section)`
 
     @media screen and (max-width: 600px) {
         flex-direction: column;
+        #scroll-button {
+            bottom: 20vh;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        
     }
 `
 

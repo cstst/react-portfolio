@@ -14,7 +14,8 @@ export default class App extends Component {
     state = {
         page: 'top',
         scrollPos: 0,
-        hideNav: true,
+        pageHead: true,
+        scrollUp: false,
         positions: {
             about: null,
             services: null,
@@ -57,17 +58,17 @@ export default class App extends Component {
                     curScrollPos > services - offset && curScrollPos < portfolio - offset ? 'services' :
                     curScrollPos > portfolio - offset && curScrollPos < contact - offset ? 'portfolio' :
                     curScrollPos > contact - offset ? 'contact' : '',
-                hideNav = !(
+                pageHead = (
                     (curScrollPos > about - 56 && curScrollPos < about + 100) ||
                     (curScrollPos > services - 56 && curScrollPos < services + 100) ||
                     (curScrollPos > portfolio - 56 && curScrollPos < portfolio + 100) ||
-                    (curScrollPos > contact - 56 && curScrollPos < contact + 100) ||
-                    curScrollPos < scrollPos
-                )    
-            console.log(ReactDOM.findDOMNode(this.portfolio).scrollHeight)
+                    (curScrollPos > contact - 56 && curScrollPos < contact + 100)),
+                scrollUp = curScrollPos < scrollPos
+                console.log(scrollUp)
             this.setState({ 
                 scrollPos: curScrollPos,
-                hideNav: hideNav,
+                pageHead: pageHead,
+                scrollUp: scrollUp,
                 page: curPage
             }) 
         }
@@ -76,9 +77,9 @@ export default class App extends Component {
         
         return(
             <Wrapper> 
-                <Header hidden={this.state.hideNav} clear={this.state.clearNav} page={this.state.page} />
+                <Header pageHead={this.state.pageHead} scrollUp={this.state.scrollUp} page={this.state.page} />
                 <Landing />
-                <About ref={x => this.about = x} />
+                <About scrollUp={this.state.scrollUp} ref={x => this.about = x} />
                 <Services ref={x => this.services = x} />
                 <Portfolio ref={x => this.portfolio = x} />
                 <Contact ref={x => this.contact = x} />
