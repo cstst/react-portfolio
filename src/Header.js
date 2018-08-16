@@ -30,15 +30,13 @@ export default class Header extends Component {
             <StyledNavbar 
                 className={this.props.hidden && this.props.clear ? "hidden clear" : 
                     this.props.hidden ? "hidden" : 
-                    this.props.clear ? "clear" : "none"} 
+                    this.props.clear ? "clear" : ""} 
                 light 
                 color="light" 
                 fixed="top" 
                 expand="md"
             >
-                <NavbarBrand onClick={() => scroll.scrollToTop()}>
-                    {(this.props.curPg === "about" || this.props.curPg === "top") ? '' : 'Derek Larson'}
-                </NavbarBrand>
+                
                 <NavbarToggler onClick={() => this.setState({isOpen: !this.state.isOpen})}/>
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
@@ -73,38 +71,41 @@ export default class Header extends Component {
 
 const StyledNavbar = styled(Navbar)`
     user-select: none;
-    color: hsl(210, 2%, 58%);
     font-weight: 100;
     top: 0;
     transition: all .3s ease;
-    .navbar-brand, a {
-        cursor: pointer;
-    }
     .navbar-toggler {
         outline: none;
     }
     .active {
         font-weight: 500;
-        color: 	hsl(0, 0%, 7%);
         transition: all .3s ease;
-        
     }
 
 `
 const Wrapper = styled.div`
-
+    transition: all 1s ease !important;
+    .navbar {
+        background: rgba(0, 0, 0, .7) !important;
+        a {
+            color: white !important;
+            cursor: pointer;
+        }
+        .navbar-toggler {
+                color: white;
+        
+        }
+        display: flex !important;
+        justify-content: flex-end !important;
+        .navbar-nav {
+        }
+    }
     .hidden {
         top: -56px !important;
     }
     .clear {
-        background: transparent !important;
-        a {
-            color: white !important;
-        }
-        .navbar-toggler-icon {
-                color: white;
-        
-        }
+        background: rgba(0, 0, 0, 0) !important;
+
     }
     
 `

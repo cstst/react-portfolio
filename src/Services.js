@@ -68,6 +68,7 @@ const Wrapper = styled(Section)`
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        background-position: -415px 0;
         .service {
             width: 95%;
         }

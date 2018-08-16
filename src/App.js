@@ -25,30 +25,39 @@ export default class App extends Component {
     }
 
     componentDidMount = () => {
-        window.scrollTo(0, 0)
+        
         window.addEventListener('scroll', this.handleScroll)
-        const offset = window.innerHeight * .75
-        const about = ReactDOM.findDOMNode(this.about).offsetTop - offset,
-            services = ReactDOM.findDOMNode(this.services).offsetTop - offset,
-            portfolio = ReactDOM.findDOMNode(this.portfolio).offsetTop - offset,
-            contact = ReactDOM.findDOMNode(this.contact).offsetTop - offset
+        const offset = window.innerHeight * .75,
+            about = ReactDOM.findDOMNode(this.about).offsetTop,
+            services = ReactDOM.findDOMNode(this.services).offsetTop,
+            portfolio = ReactDOM.findDOMNode(this.portfolio).offsetTop,
+            contact = ReactDOM.findDOMNode(this.contact).offsetTop
         this.setState({
-            curPg: 'top',
             positions: {
-                about: about,
-                services: services,
-                portfolio: portfolio,
-                contact: contact,
+                about: about - offset,
+                services: services - offset,
+                portfolio: portfolio - offset,
+                contact: contact - offset,
             },
         })
     }
 
     handleScroll = () => {
-
-        const currentScrollPos = window.pageYOffset,
-            clearNav = (ReactDOM.findDOMNode(this.about).offsetTop + 150) > currentScrollPos,
-            hideNav = !(currentScrollPos > ReactDOM.findDOMNode(this.about).offsetTop -56 && 
-                        currentScrollPos < ReactDOM.findDOMNode(this.about).offsetTop + 100)
+        const { curPg,
+                positions: {
+                    about, 
+                    services, 
+                    portfolio, 
+                    contact 
+                } 
+            } = this.state,
+            curPos = window.scrollY,
+            offset = window.innerHeight * .75,
+            currentScrollPos = window.pageYOffset,
+            aboutNoOffset = about + offset,
+            clearNav = (aboutNoOffset + 150) > currentScrollPos,
+            hideNav = !(currentScrollPos > aboutNoOffset - 56 && 
+                        currentScrollPos < aboutNoOffset + 112)
         if (this.state.scrollPos > currentScrollPos) {
             this.setState({ 
                 scrollPos: currentScrollPos,
@@ -62,16 +71,6 @@ export default class App extends Component {
                 clearNav: clearNav
             })
         }
-
-        const { curPg,
-                positions: {
-                    about, 
-                    services, 
-                    portfolio, 
-                    contact 
-                } 
-            } = this.state,
-            curPos = window.scrollY
         switch(true) {
             case (curPos < about && curPg !== 'top'):
                 this.setState({ curPg: 'top' })
