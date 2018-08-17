@@ -8,27 +8,28 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 
 export default class Contact extends Component {
-
-    state = {
-        flashVisible: false,
-        flashMessage: '',
-        form: {
-            name: '',
-            email: '',
-            subject: '',
-            message: '',
-        },
+    constructor(props) {
+        super(props)
+        this.state = {
+            flashVisible: false,
+            flashMessage: '',
+            form: {
+                name: '',
+                email: '',
+                subject: '',
+                message: '',
+            },
+        }    
     }
-
-
-    handleFormChange = (e) => {
+    
+    handleFormChange = e => {
         const { id, value } = e.target
         this.setState({
             form: {
                 ...this.state.form,
                 [id]: value
             }
-        });
+        })
     }
 
     handleFormSubmit = e => {
@@ -61,7 +62,7 @@ export default class Contact extends Component {
 
     render() {
         return(    
-            <Wrapper title="Get In Touch" ScrollElement="contact" scrollButtonTo="top">
+            <Wrapper innerRef={this.props.innerRef} title="Get In Touch" ScrollElement="contact" scrollButtonTo="top">
                 <ContactForm onSubmit={this.handleFormSubmit}>
                     <div>
                         <Input id="name" 

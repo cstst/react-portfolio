@@ -5,18 +5,23 @@ import BackgroundImage from './img/back.jpg'
 import styled, { keyframes } from 'styled-components'
 
 export default class Landing extends Component {
-
-    state = {
-        aWidth: '',
-        bWidth: '',
-        cWidth: '',
+    constructor(props) {
+        super(props) 
+        this.a = React.createRef()
+        this.b = React.createRef()
+        this.c = React.createRef()
+        this.state = {
+            aWidth: '',
+            bWidth: '',
+            cWidth: '',
+        }
     }
 
     componentDidMount() {
         this.setState({
-            aWidth: `${this.a.offsetWidth + 10}px`,
-            bWidth: `${this.b.offsetWidth + 10}px`,
-            cWidth: `${this.c.offsetWidth + 10}px`,
+            aWidth: `${this.a.current.offsetWidth + 10}px`,
+            bWidth: `${this.b.current.offsetWidth + 10}px`,
+            cWidth: `${this.c.current.offsetWidth + 10}px`,
         })
     }
 
@@ -24,9 +29,9 @@ export default class Landing extends Component {
         return(
             <Wrapper scrollButtonTo="about">
                 <TextCarousel widths={this.state}>
-                    <CarouselWord a innerRef={x => this.a = x} id="a">Developer</CarouselWord>
-                    <CarouselWord b innerRef={x => this.b = x} id="b">Designer</CarouselWord>
-                    <CarouselWord c innerRef={x => this.c = x} id="c">Traveler</CarouselWord>
+                    <CarouselWord a innerRef={this.a} id="a">Developer</CarouselWord>
+                    <CarouselWord b innerRef={this.b} id="b">Designer</CarouselWord>
+                    <CarouselWord c innerRef={this.c} id="c">Traveler</CarouselWord>
                 </TextCarousel>
             </Wrapper>
         )

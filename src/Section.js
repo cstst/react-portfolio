@@ -6,8 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 
-export default props => (
-    <Section className={props.className}>
+export default React.forwardRef((props, ref) => (
+    <Section 
+        innerRef={ref} 
+        className={props.className}
+    >
         {props.ScrollElement ? <Element id="element" name={props.ScrollElement} /> : null}
         {props.title ? <h4>{props.title}</h4> : null}
         {props.children}
@@ -16,11 +19,12 @@ export default props => (
                 to={props.scrollButtonTo === "top" ? null : props.scrollButtonTo} 
                 onClick={props.scrollButtonTo === "top" ? () => scroll.scrollToTop() : null} 
                 smooth={true} 
-                duration={1000}>
+                duration={1000}
+        >
             <FontAwesomeIcon icon={faChevronDown} />
         </StyledLink>
     </Section>
-)
+))
 
 const Section = styled.div`
     position: relative;

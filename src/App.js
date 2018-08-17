@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import styled, { injectGlobal } from 'styled-components'
 import Header from "./Header"
 import Landing from './Landing'
@@ -10,32 +9,35 @@ import Contact from './Contact'
 import BackgroundOne from './img/back.jpg'
 
 export default class App extends Component {
-
-    state = {
-        page: 'top',
-        scrollPos: 0,
-        pageHead: true,
-        scrollUp: false,
-        positions: {
-            about: null,
-            services: null,
-            portfolio: null,
-            contact: null,
-        },
+    constructor(props) {
+        super(props)
+        this.about = React.createRef()
+        this.services = React.createRef()
+        this.portfolio = React.createRef()
+        this.contact = React.createRef()
+        this.state = {
+            page: 'top',
+            scrollPos: 0,
+            pageHead: false,
+            scrollUp: false,
+            positions: {
+                about: null,
+                services: null,
+                portfolio: null,
+                contact: null,
+            },
+        }
     }
 
     componentDidMount = () => {
+        window.onbeforeunload = () => window.scrollTo(0,0) 
         window.addEventListener('scroll', this.handleScroll)
-        const about = ReactDOM.findDOMNode(this.about).offsetTop,
-            services = ReactDOM.findDOMNode(this.services).offsetTop,
-            portfolio = ReactDOM.findDOMNode(this.portfolio).offsetTop,
-            contact = ReactDOM.findDOMNode(this.contact).offsetTop
         this.setState({
             positions: {
-                about: about,
-                services: services,
-                portfolio: portfolio,
-                contact: contact,
+                about: this.about.current.offsetTop,
+                services: this.services.current.offsetTop,
+                portfolio: this.portfolio.current.offsetTop,
+                contact: this.contact.current.offsetTop,
             },
         })
     }
@@ -43,7 +45,7 @@ export default class App extends Component {
     handleScroll = () => {
         const { scrollPos } = this.state,
             curScrollPos = window.pageYOffset
-        if (scrollPos + 40 < curScrollPos || scrollPos - 40 > curScrollPos) {
+        if (scrollPos + 50 < curScrollPos || scrollPos - 50 > curScrollPos) {
             const { positions: {
                         about, 
                         services, 
@@ -64,7 +66,6 @@ export default class App extends Component {
                     (curScrollPos > portfolio - 56 && curScrollPos < portfolio + 100) ||
                     (curScrollPos > contact - 56 && curScrollPos < contact + 100)),
                 scrollUp = curScrollPos < scrollPos
-                console.log(scrollUp)
             this.setState({ 
                 scrollPos: curScrollPos,
                 pageHead: pageHead,
@@ -73,16 +74,20 @@ export default class App extends Component {
             }) 
         }
     }
+
     render() {
-        
         return(
             <Wrapper> 
-                <Header pageHead={this.state.pageHead} scrollUp={this.state.scrollUp} page={this.state.page} />
+                <Header 
+                    pageHead={this.state.pageHead} 
+                    scrollUp={this.state.scrollUp} 
+                    page={this.state.page} 
+                />
                 <Landing />
-                <About scrollUp={this.state.scrollUp} ref={x => this.about = x} />
-                <Services ref={x => this.services = x} />
-                <Portfolio ref={x => this.portfolio = x} />
-                <Contact ref={x => this.contact = x} />
+                <About innerRef={this.about} />
+                <Services innerRef={this.services} />
+                <Portfolio innerRef={this.portfolio} />
+                <Contact innerRef={this.contact} />
             </Wrapper>
         )
     }
