@@ -12,7 +12,7 @@ import styled from 'styled-components'
 export default props => (    
     <Wrapper innerRef={props.innerRef} title="About Me" ScrollElement="about" scrollButtonTo="services">
         <div id="headshot-holder">
-            <img id="headshot" src={Derek}/>
+            <img id="headshot" src={Derek} alt="headshot"/>
         </div>
         <div id="copy">
             <p>
