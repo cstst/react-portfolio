@@ -22,7 +22,7 @@ export default props => (
             </p>
             <p>
                 I have spent the last five years living in Southeast Asia &amp; traveling the world, which has given me a broader perspective
-                on life and the skills needed to think oustide the box. I love a challenge and am a genuine autodidact. Get in touch
+                on life and the skills needed to think outside the box. I love a challenge and am a genuine autodidact. Get in touch
                 with me for help on your project!
             </p>
         </div>
