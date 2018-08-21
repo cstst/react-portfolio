@@ -70,30 +70,26 @@ const Wrapper = styled(Section)`
     align-items: center;
     justify-content: center;
     border: none;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.6), 
-        rgba(0, 0, 0, 0.6)
-        ), url(${BackgroundImage}) no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: 0 0; 
-    @media screen and (max-width: 600px) {
-        background: transparent;
-        height: calc(100vh - 112px);
+    background: transparent
+    
+    @media screen and (min-width: 600px) {
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.6), 
+            rgba(0, 0, 0, 0.6)
+            ), url(${BackgroundImage}) no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: 0 0; 
     }
-    @media screen and (max-width: 600px) {
-        #scroll-button {
-            bottom: 20vh;
-        }
-    }
+
 `
 
 const TextCarousel = styled.div`
     position: relative;
-    height: 110px;
+    height: 5em;
     animation: ${slider} 6s ease infinite;
     border-right: 1px solid white;
     overflow: hidden;
@@ -104,14 +100,12 @@ const TextCarousel = styled.div`
 
 `
 
-const CarouselWord = styled.h2`
+const CarouselWord = styled.h1`
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 85px;
+    font-size: 15vw;
     font-weight: bold;
     animation: ${hider} 6s linear infinite;
-    @media screen and (max-width: 600px) {
-        font-size: 65px;
-    }
+
 `

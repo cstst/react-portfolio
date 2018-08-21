@@ -49,29 +49,11 @@ const Wrapper = styled(Section)`
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        margin: 10px;
-        padding: 10px;
-        text-align: justify;
-        width: 350px;
+        justify-content: flex-end;
+
         svg {
-            height: 130px;
+            =
         }   
-    }
-    @media screen and (max-width: 600px) {
-        flex-direction: column;
-        background: linear-gradient(
-            rgba(0, 0, 0, 0.6), 
-            rgba(0, 0, 0, 0.6)
-            ), url(${background}) no-repeat center center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        background-position: -415px 0;
-        .service {
-            width: 95%;
-        }
     }
 `
 

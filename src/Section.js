@@ -11,7 +11,7 @@ export default React.forwardRef((props, ref) => (
         innerRef={ref} 
         className={props.className}
     >
-        {props.ScrollElement ? <Element id="element" name={props.ScrollElement} /> : null}
+        {props.ScrollElement ? <Element class="element" name={props.ScrollElement} /> : null}
         {props.title ? <h4>{props.title}</h4> : null}
         {props.children}
         <StyledLink 
@@ -26,63 +26,38 @@ export default React.forwardRef((props, ref) => (
     </Section>
 ))
 
-const Section = styled.div`
+const Section = styled.section`
     position: relative;
-    padding: 125px;
     box-sizing: border-box;
-    height: auto;
-    min-height: calc(100vh - 56px);
     background: #111111;
     font-family: 'Open Sans', sans-serif;
-    font-size: 20px;
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    min-height: 100vh;
+    width: 100vw;
     h4 {
-        position: absolute;
-        top: 50px;
-        left: 50px;
-        font-size: 30px;
+
     }
     h6 {
-        font-size: 25px;
+        
     }
-    #element {
+    .element {
         position: absolute;
         top: 0;
         left: 0;
     }
-    @media screen and (max-width: 600px) {
-        height: auto;
-        min-height: calc(100vh - 56px);
-        padding: 80px 10px;
-        font-size: 15px;
-        h4 {
-            position: absolute;
-            top: 30px;
-            left: 10px;
-            font-size: 25px;
-        }
-        h6 {
-            font-size: 20px;
-        }
-    }
+
 `
 
 const StyledLink = styled(Link)`
     position: absolute;
     transform: ${props => !props.to ? 'rotate(180deg)' : null};
     align-self: center;
-    left: 50%;
-    margin-left: -15px;
-    width: 30px;
-    bottom: ${props => props.to ? '10vh' : '5vh'};
     background: transparent;
     border: none;
     outline: none;
     user-select: none;
-    font-size: 15px;
     z-index: 0;
     &:focus {
         border: none;

@@ -57,10 +57,10 @@ export default props => (
         </div>
     </Wrapper>
 )
-const Wrapper = styled(Section)`    
-    min-height: 100vh;
+const Wrapper = styled(Section)`   
+
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
     #headshot-holder {
         position: relative;    
         &:before {
@@ -78,8 +78,8 @@ const Wrapper = styled(Section)`
             top: -5px;
             left: -5px;
             transition: all 0.3s ease;
-            width: auto;
-            height: 300px;
+            width: 15em;
+            height: auto;
         }
         &:hover {
             &:before {
@@ -98,33 +98,25 @@ const Wrapper = styled(Section)`
     }
     #copy {
         display: flex;
-        text-align: justify;
         flex-direction: column;
         justify-content: space-between;
-        height: 300px;
-        margin-left: 50px;
+
         @media screen and (max-width: 600px) {
-            margin-left: 0;
-            margin-bottom: 25px;
-            width: 95%;
+
         }
     }
     #links {
         position: absolute;
-        width: 35vw;
-        bottom: 3.75vh;
-        left: 0;
+
         display: flex;
         justify-content: flex-end;
-        margin-left: 125px;
+ 
         #emailOne {
             display: none;
         }
         @media screen and (max-width: 600px) {
             position: relative;
-            bottom: 30px;
-            margin: auto;
-            width: 85vw;
+
             #emailOne {
                 display: block;
             }
@@ -135,12 +127,9 @@ const Wrapper = styled(Section)`
     }
     #resume {
         position: absolute;
-        width: 35vw;
-        bottom: 3.75vh;
-        right: 0;
+
         display: flex;
         justify-content: flex-start;
-        margin-right: 125px;
         @media screen and (max-width: 600px) {
             display: none;
         }
@@ -148,7 +137,6 @@ const Wrapper = styled(Section)`
     @media screen and (max-width: 600px) {
         flex-direction: column;
         #scroll-button {
-            bottom: 20vh;
         }
     }
     @media screen and (max-width: 600px) {
@@ -157,12 +145,11 @@ const Wrapper = styled(Section)`
 `
 const StyledA = styled.a`
     position: relative;
-    margin: 10px;
+
     background: transparent;
     border: none;
     color: rgb(255, 255, 255);
     transition: color .3s ease-out;
-    width: 160px;
     text-align: center;
     &:before {
         content: '${props => props.tooltip}';
@@ -190,7 +177,6 @@ const StyledA = styled.a`
     }
 `
 const StyledLink = styled(Link)`
-    margin: 10px;
-    width: 160px;
+
     text-align: center;
 `

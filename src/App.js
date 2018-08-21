@@ -103,7 +103,7 @@ injectGlobal`
 `
 
 const Wrapper = styled.div`
-    @media screen and (max-width: 600px) {
+        width: 100vw;
         &:before {
             content: "";
             display: block;
@@ -113,7 +113,6 @@ const Wrapper = styled.div`
             width: 100vw;
             height: 100vh;
             z-index: -9;
-            opacity: 1
             background: linear-gradient(
                 rgba(0, 0, 0, 0.6), 
                 rgba(0, 0, 0, 0.6)
@@ -124,6 +123,5 @@ const Wrapper = styled.div`
             background-size: cover;
             background-position: 0 0;
         }
-    }
     
 `

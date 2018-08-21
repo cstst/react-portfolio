@@ -105,7 +105,6 @@ export default class Contact extends Component {
 
 const Wrapper = styled(Section)`
     min-height: 100vh;
-    justify-content: flex-end;
     background: linear-gradient(
         rgba(0, 0, 0, 0.6), 
         rgba(0, 0, 0, 0.6)
