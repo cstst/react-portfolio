@@ -31,7 +31,7 @@ export default class App extends Component {
 
     componentDidMount = () => {
         window.onbeforeunload = () => window.scrollTo(0,0) 
-        window.addEventListener('scroll', this.handleScroll)
+        window.onscroll = this.handleScroll
         this.setState({
             positions: {
                 about: this.about.current.offsetTop,
@@ -76,18 +76,19 @@ export default class App extends Component {
     }
 
     render() {
+        const { state: { pageHead, scrollUp, page}, about, services, portfolio, contact } = this
         return(
             <Wrapper> 
                 <Header 
-                    pageHead={this.state.pageHead} 
-                    scrollUp={this.state.scrollUp} 
-                    page={this.state.page} 
+                    pageHead={pageHead} 
+                    scrollUp={scrollUp} 
+                    page={page} 
                 />
                 <Landing />
-                <About innerRef={this.about} />
-                <Services innerRef={this.services} />
-                <Portfolio innerRef={this.portfolio} />
-                <Contact innerRef={this.contact} />
+                <About innerRef={about} />
+                <Services innerRef={services} />
+                <Portfolio innerRef={portfolio} />
+                <Contact innerRef={contact} />
             </Wrapper>
         )
     }
@@ -103,7 +104,6 @@ injectGlobal`
 `
 
 const Wrapper = styled.div`
-        width: 100vw;
         &:before {
             content: "";
             display: block;

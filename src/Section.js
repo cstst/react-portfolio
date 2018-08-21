@@ -35,7 +35,8 @@ const Section = styled.section`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    width: 100vw;
+    max-width: 100vw;
+    overflow: hidden;
     h4 {
 
     }

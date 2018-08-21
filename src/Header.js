@@ -13,47 +13,48 @@ import styled from 'styled-components'
 export default class Header extends Component {
     
     state = {
-        scrollPos: 0,
         isOpen: false,
     }
 
-    componentDidUpdate = props => {
-        if (!props.scrollUp && this.state.isOpen) {
+    componentDidUpdate = () => { 
+        const { props: { scrollUp }, state: { isOpen } } = this
+        if (!scrollUp && isOpen) {
             this.setState({ isOpen: false })
         }
     }
 
     render() {
+        const { state: { isOpen }, props: { scrollUp, pageHead, page } } = this
         return (
             <Wrapper>
                 <Navbar 
                     className={
-                        this.props.scrollUp ? "scroll-up" : 
-                        this.props.pageHead ? "page-head" :
-                        this.state.isOpen ? "open" : ""
+                        scrollUp ? "scroll-up" : 
+                        pageHead ? "page-head" :
+                        isOpen ? "open" : ""
                     } 
                     fixed="top" 
                     expand="md"
                 >   
-                    <NavbarToggler onClick={() => this.setState({isOpen: !this.state.isOpen})}/>
-                    <Collapse isOpen={this.state.isOpen} navbar>
+                    <NavbarToggler onClick={() => this.setState({isOpen: !isOpen})}/>
+                    <Collapse isOpen={isOpen} navbar>
                         <Nav className="ml-auto" navbar>
-                            <NavItem className={this.props.page ==="about" ? "active" : ""}>
+                            <NavItem className={page ==="about" ? "active" : ""}>
                                 <Link to="about" smooth={true} duration={1000}>
                                     <NavLink>About</NavLink>
                                 </Link>
                             </NavItem>
-                            <NavItem className={this.props.page ==="services" ? "active" : ""}>
+                            <NavItem className={page ==="services" ? "active" : ""}>
                                 <Link to="services" smooth={true} duration={1000}>
                                     <NavLink>Services</NavLink>
                                 </Link>
                             </NavItem>
-                            <NavItem className={this.props.page ==="portfolio" ? "active" : ""}>
+                            <NavItem className={page ==="portfolio" ? "active" : ""}>
                                 <Link to="portfolio" smooth={true} duration={1000}>
                                     <NavLink>Portfolio</NavLink>
                                 </Link>
                             </NavItem>
-                            <NavItem className={this.props.page ==="contact" ? "active" : ""}>
+                            <NavItem className={page ==="contact" ? "active" : ""}>
                                 <Link to="contact" smooth={true} duration={1000}>
                                     <NavLink>Contact</NavLink>
                                 </Link>
@@ -70,13 +71,13 @@ const Wrapper = styled.div`
     .navbar {
         display: flex;
         justify-content: flex-end;
-        background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, 0)) !important;
+        background: rgba(0, 0, 0, 0) !important;
         user-select: none;
         font-weight: 100;
         top: -56px;
         transition: all .3s ease !important;
-        @media screen and (max-width: 600px) {
-            background: rgba(0, 0, 0, 0) !important;
+        @media screen and (min-width: 600px) {
+            background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, 0)) !important;
         }
         .navbar-toggler {
             outline: none;

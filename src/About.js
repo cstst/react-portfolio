@@ -101,9 +101,6 @@ const Wrapper = styled(Section)`
         flex-direction: column;
         justify-content: space-between;
 
-        @media screen and (max-width: 600px) {
-
-        }
     }
     #links {
         position: absolute;
@@ -160,13 +157,10 @@ const StyledA = styled.a`
         left: 50%;
         transform: translate(-50%, 0);
         margin: auto;
-        font-size: 15px;
         opacity: 0;
         text-align: left;
         z-index: 0;
-        @media screen and (max-width: 600px) {
-            font-size: 12px;
-        }
+
     }
     &:hover {
         color: rgba(0, 0, 0, 0);
