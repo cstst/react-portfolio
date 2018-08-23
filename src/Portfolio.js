@@ -7,7 +7,12 @@ import Pomodoro from './img/Pomodoro Timer.png'
 import Simon from './img/Simon.png'
 
 export default props => (
-    <Wrapper innerRef={props.innerRef} title="My Portfolio" ScrollElement="portfolio" scrollButtonTo="contact">
+    <Wrapper 
+        innerRef={props.innerRef} 
+        title="My Portfolio" 
+        scrollElement="portfolio" 
+        scrollButtonTo="contact"
+    >
         <div id="projects">
             <div>
                 <img src={MovieDatabase} />

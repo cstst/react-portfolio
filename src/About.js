@@ -10,7 +10,7 @@ import { faEnvelope, faDownload } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 
 export default props => (    
-    <Wrapper innerRef={props.innerRef} title="About Me" ScrollElement="about" scrollButtonTo="services">
+    <Wrapper innerRef={props.innerRef} title="About Me" scrollElement="about" scrollButtonTo="services">
         <div id="headshot-holder">
             <img id="headshot" src={Derek} alt="headshot"/>
         </div>

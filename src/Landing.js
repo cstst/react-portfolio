@@ -20,24 +20,33 @@ export default class Landing extends Component {
     }
 
     componentDidMount() {
+        const { a: { current: a }, 
+                b: { current: b }, 
+                c: { current: c } 
+            } = this
         this.setState({
             docWidth: document.body.offsetWidth,
-            aWidth: `${this.a.current.offsetWidth}px`,
-            bWidth: `${this.b.current.offsetWidth}px`,
-            cWidth: `${this.c.current.offsetWidth}px`,
+            aWidth: `${a.offsetWidth}px`,
+            bWidth: `${b.offsetWidth}px`,
+            cWidth: `${c.offsetWidth}px`,
         })
 
-        const refs = [this.carousel.current, this.a.current, this.b.current, this.c.current]
-
         window.onresize = () => {
-            if (this.state.docWidth !== document.body.offsetWidth) {
+            const { carousel: { current: carousel },  
+                    a: { current: a }, 
+                    b: { current: b }, 
+                    c: { current: c }, 
+                    state: { docWidth } 
+                } = this,
+                refs = [carousel, a, b, c]
+            if (docWidth !== document.body.offsetWidth) {
                 refs.forEach(ref => ref.style.animation = 'none' )
                 setTimeout(() => refs.forEach(ref => ref.style.animation = ''), 1)
                 this.setState({
                     docWidth: document.body.offsetWidth,
-                    aWidth: `${this.a.current.offsetWidth}px`,
-                    bWidth: `${this.b.current.offsetWidth}px`,
-                    cWidth: `${this.c.current.offsetWidth}px`,
+                    aWidth: `${a.offsetWidth}px`,
+                    bWidth: `${b.offsetWidth}px`,
+                    cWidth: `${c.offsetWidth}px`,
                 })
             }   
         }
@@ -45,42 +54,44 @@ export default class Landing extends Component {
 
 
     render() {
+        const { carousel, a, b, c, state } = this
         return(
             <Wrapper scrollButtonTo="about">
-                <TextCarousel innerRef={this.carousel} widths={this.state}>
-                    <CarouselWord a innerRef={this.a} id="a">Developer</CarouselWord>
-                    <CarouselWord b innerRef={this.b} id="b">Designer</CarouselWord>
-                    <CarouselWord c innerRef={this.c} id="c">Traveler</CarouselWord>
+                <TextCarousel innerRef={carousel} widths={state}>
+                    <CarouselWord a innerRef={a}>Developer</CarouselWord>
+                    <CarouselWord b innerRef={b}>Designer</CarouselWord>
+                    <CarouselWord c innerRef={c}>Traveler</CarouselWord>
                 </TextCarousel>
             </Wrapper>
         )
     }
 }
 
-const slider = props => keyframes`
+
+const slider = ({ widths: { aWidth, bWidth, cWidth } }) => keyframes`
     0%, 33%, 66%, 99% {
         width: 1px;
     }
     11%, 22% {
-        width: calc(${props.widths.aWidth} + .15em);
+        width: calc(${aWidth} + .15em);
     }
     44%, 55% {
-        width: calc(${props.widths.bWidth} + .15em);
+        width: calc(${bWidth} + .15em);
     }
     77%, 88% {
-        width: calc(${props.widths.cWidth} + .15em);
+        width: calc(${cWidth} + .15em);
     }
 `
 
-const hider = props => keyframes`
+const hider = ({ a, b, c }) => keyframes`
     0%, 32% {
-        opacity: ${props.a ? '1' : '0'};
+        opacity: ${a ? '1' : '0'};
     }
     33%, 65% {
-        opacity: ${props.b ? '1' : '0'};
+        opacity: ${b ? '1' : '0'};
     }
     66%, 99% {
-        opacity: ${props.c ? '1' : '0'};
+        opacity: ${c ? '1' : '0'};
     }
 `
 
@@ -110,7 +121,10 @@ const TextCarousel = styled.div`
         font-size: 13vw;
     }
     @media screen and (min-width: 768px) {
-        font-size: 8vw;
+        font-size: 9vw;
+    }
+    @media screen and (min-width: 1024px) {
+        font-size: 7vw;
     }
 
     height: 1.18em;

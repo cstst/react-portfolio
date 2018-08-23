@@ -10,7 +10,7 @@ export default props => (
     <Wrapper 
         innerRef={props.innerRef} 
         title="My Services" 
-        ScrollElement="services" 
+        scrollElement="services" 
         scrollButtonTo="portfolio"
     >
         <div className="service">

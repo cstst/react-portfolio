@@ -6,7 +6,7 @@ import About from './About'
 import Services from './Services'
 import Portfolio from './Portfolio'
 import Contact from './Contact'
-import BackgroundOne from './img/back.jpg'
+import BackgroundImage from './img/back.jpg'
 
 export default class App extends Component {
     constructor(props) {
@@ -30,14 +30,19 @@ export default class App extends Component {
     }
 
     componentDidMount = () => {
+        const { about: { current: about },
+                services: { current: services },
+                portfolio: { current: portfolio },
+                contact: { current: contact }
+            } = this
         window.onbeforeunload = () => window.scrollTo(0,0) 
         window.onscroll = this.handleScroll
         this.setState({
             positions: {
-                about: this.about.current.offsetTop,
-                services: this.services.current.offsetTop,
-                portfolio: this.portfolio.current.offsetTop,
-                contact: this.contact.current.offsetTop,
+                about: about.offsetTop,
+                services: services.offsetTop,
+                portfolio: portfolio.offsetTop,
+                contact: contact.offsetTop,
             },
         })
     }
@@ -46,15 +51,16 @@ export default class App extends Component {
         const { scrollPos } = this.state,
             curScrollPos = window.pageYOffset
         if (scrollPos + 50 < curScrollPos || scrollPos - 50 > curScrollPos) {
-            const { positions: {
+            const scrollUp = curScrollPos < scrollPos,
+                offset = window.innerHeight * .66, 
+                { positions: {
                         about, 
                         services, 
                         portfolio, 
                         contact 
                     } 
                 } = this.state,
-                offset = window.innerHeight * .66,
-                curPage = 
+                page = 
                     curScrollPos < about - offset ? 'top' :
                     curScrollPos > about - offset && curScrollPos < services - offset  ? 'about' :
                     curScrollPos > services - offset && curScrollPos < portfolio - offset ? 'services' :
@@ -64,19 +70,24 @@ export default class App extends Component {
                     (curScrollPos > about - 56 && curScrollPos < about + 100) ||
                     (curScrollPos > services - 56 && curScrollPos < services + 100) ||
                     (curScrollPos > portfolio - 56 && curScrollPos < portfolio + 100) ||
-                    (curScrollPos > contact - 56 && curScrollPos < contact + 100)),
-                scrollUp = curScrollPos < scrollPos
+                    (curScrollPos > contact - 56 && curScrollPos < contact + 100)
+                )            
             this.setState({ 
                 scrollPos: curScrollPos,
                 pageHead: pageHead,
                 scrollUp: scrollUp,
-                page: curPage
+                page: page
             }) 
         }
     }
 
     render() {
-        const { state: { pageHead, scrollUp, page}, about, services, portfolio, contact } = this
+        const { state: { pageHead, scrollUp, page}, 
+                about, 
+                services, 
+                portfolio, 
+                contact 
+            } = this
         return(
             <Wrapper> 
                 <Header 
@@ -116,7 +127,7 @@ const Wrapper = styled.div`
             background: linear-gradient(
                 rgba(0, 0, 0, 0.6), 
                 rgba(0, 0, 0, 0.6)
-                ), url(${BackgroundOne}) no-repeat center center;
+                ), url(${BackgroundImage}) no-repeat center center;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;

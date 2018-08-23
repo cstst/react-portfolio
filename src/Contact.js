@@ -62,7 +62,7 @@ export default class Contact extends Component {
 
     render() {
         return(    
-            <Wrapper innerRef={this.props.innerRef} title="Get In Touch" ScrollElement="contact" scrollButtonTo="top">
+            <Wrapper innerRef={this.props.innerRef} title="Get In Touch" scrollElement="contact" scrollButtonTo="top">
                 <ContactForm onSubmit={this.handleFormSubmit}>
                     <div>
                         <Input id="name" 
