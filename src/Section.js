@@ -11,17 +11,22 @@ export default React.forwardRef(({ className, scrollElement, title, children, sc
         innerRef={ref} 
         className={className}
     >
-        {scrollElement ? <Element class="element" name={scrollElement} /> : null}
+        {scrollElement ? <Element className="element" name={scrollElement} /> : null}
         {title ? <h2>{title}</h2> : null}
         {children}
-        <StyledLink 
-            to={scrollButtonTo !== "top" ? scrollButtonTo : null} 
-            onClick={scrollButtonTo === "top" ? () => scroll.scrollToTop() : null} 
-            smooth={true} 
-            duration={1000}
-        >   
-            <FontAwesomeIcon icon={faChevronDown} />
-        </StyledLink>
+        {scrollButtonTo !== 'top' ? 
+            <StyledLink 
+                to={scrollButtonTo} 
+                smooth={true} 
+                duration={1000}
+            >   
+                <FontAwesomeIcon icon={faChevronDown} />
+            </StyledLink>
+            :
+            <StyledLinkImitation onClick={() => scroll.scrollToTop()}>   
+                <FontAwesomeIcon icon={faChevronDown} />
+            </StyledLinkImitation>
+        }  
     </Section>
 ))
 
@@ -62,7 +67,6 @@ const StyledLink = styled(Link)`
     bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
-    transform: ${props => !props.to ? 'rotate(180deg)' : null};
     background: transparent;
     outline: none;
     user-select: none;
@@ -97,4 +101,9 @@ const StyledLink = styled(Link)`
         color: white;
         cursor: pointer;
     }
+`
+
+const StyledLinkImitation = StyledLink.withComponent('div').extend`
+    transform: rotate(180deg);
+    bottom: 25px;
 `

@@ -31,9 +31,9 @@ export default props => (
                 smooth={true} 
                 duration={1000} 
                 offset={-56}>
-                    <StyledA tooltip="Email me" href="" >
+                    <StyledAImitation tooltip="Email me">
                         <FontAwesomeIcon icon={faEnvelope} transform="grow-8" />
-                    </StyledA>
+                    </StyledAImitation>
             </StyledLink>
             <StyledA tooltip="Visit my LinkedIn" href="https://www.linkedin.com/in/derekslarson" target="_blank">
                 <FontAwesomeIcon icon={faLinkedin} transform="grow-8" />
@@ -47,9 +47,9 @@ export default props => (
                 smooth={true} 
                 duration={1000} 
                 offset={-56}>
-                    <StyledA tooltip="Email me" href="" >
+                    <StyledAImitation tooltip="Email me">
                         <FontAwesomeIcon icon={faEnvelope} transform="grow-8" />
-                    </StyledA>
+                    </StyledAImitation>
             </StyledLink>
             <StyledA tooltip="Download my resume" href={Resume} download>
                 <FontAwesomeIcon icon={faDownload} transform="grow-8" />
@@ -174,3 +174,5 @@ const StyledLink = styled(Link)`
 
     text-align: center;
 `
+
+const StyledAImitation = StyledA.withComponent('p')

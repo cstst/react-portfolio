@@ -41,22 +41,22 @@ export default class Header extends Component {
                         <Nav className="ml-auto" navbar>
                             <NavItem className={page ==="about" ? "active" : ""}>
                                 <Link to="about" smooth={true} duration={1000}>
-                                    <NavLink>About</NavLink>
+                                    <p className="nav-link">About</p>
                                 </Link>
                             </NavItem>
                             <NavItem className={page ==="services" ? "active" : ""}>
                                 <Link to="services" smooth={true} duration={1000}>
-                                    <NavLink>Services</NavLink>
+                                    <p className="nav-link">Services</p>
                                 </Link>
                             </NavItem>
                             <NavItem className={page ==="portfolio" ? "active" : ""}>
                                 <Link to="portfolio" smooth={true} duration={1000}>
-                                    <NavLink>Portfolio</NavLink>
+                                    <p className="nav-link">Portfolio</p>
                                 </Link>
                             </NavItem>
                             <NavItem className={page ==="contact" ? "active" : ""}>
                                 <Link to="contact" smooth={true} duration={1000}>
-                                    <NavLink>Contact</NavLink>
+                                    <p className="nav-link">Contact</p>
                                 </Link>
                             </NavItem>
                         </Nav>
